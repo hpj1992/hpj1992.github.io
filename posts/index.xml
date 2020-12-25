@@ -1,4 +1,3 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
         <title>Posts on Harshit Joshi</title>
@@ -16,13 +15,9 @@
             
             <guid>/posts/2019/11/personal-website-101/</guid>
             <description>Motivation There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:
- Personal Branding Blog Space Makes you discoverable on internet One stop resume which works for you Helps you learn new skills while building  Tech Stack  Hugo Static Site Builder Plenty of themplates available at Hugo Themes Hosting at Github Pages Domain from Godaddy  Steps  First learn the basics of Hugo and how it works by following Hugo Quickstart Guide Once somewhat comfortable with Markdown and Hugo, choose a template/theme for your site  You can create your custom theme as well.</description>
-            <content type="html"><![CDATA[
-
-<h3 id="motivation">Motivation</h3>
-
+ Personal Branding Blog Space Makes you discoverable on internet One stop resume which works for you Helps you learn new skills while building  Tech Stack  Hugo Static Site Builder Plenty of themplates available at Hugo Themes Hosting at Github Pages Domain from Godaddy  Steps  First learn the basics of Hugo and how it works by following Hugo Quickstart Guide Once somewhat comfortable with Markdown and Hugo, choose a template/theme for your site You can create your custom theme as well.</description>
+            <content type="html"><![CDATA[<h3 id="motivation">Motivation</h3>
 <p>There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:</p>
-
 <ul>
 <li>Personal Branding</li>
 <li>Blog Space</li>
@@ -30,67 +25,49 @@
 <li>One stop resume which works for you</li>
 <li>Helps you learn new skills while building</li>
 </ul>
-
 <h3 id="tech-stack">Tech Stack</h3>
-
 <ul>
-<li><a href="https://gohugo.io/" target="_blank">Hugo Static Site Builder</a></li>
-<li>Plenty of themplates available at <a href="https://themes.gohugo.io/" target="_blank">Hugo Themes</a></li>
-<li>Hosting at <a href="https://pages.github.com/" target="_blank">Github Pages</a></li>
-<li>Domain from <a href="https://www.godaddy.com/" target="_blank">Godaddy</a></li>
+<li><a href="https://gohugo.io/">Hugo Static Site Builder</a></li>
+<li>Plenty of themplates available at <a href="https://themes.gohugo.io/">Hugo Themes</a></li>
+<li>Hosting at <a href="https://pages.github.com/">Github Pages</a></li>
+<li>Domain from <a href="https://www.godaddy.com/">Godaddy</a></li>
 </ul>
-
 <h3 id="steps">Steps</h3>
-
 <ul>
-<li>First learn the basics of Hugo and how it works by following <a href="https://gohugo.io/getting-started/quick-start/" target="_blank">Hugo Quickstart Guide</a></li>
-<li>Once somewhat comfortable with Markdown and Hugo, choose a <a href="https://themes.gohugo.io/" target="_blank">template/theme</a> for your site
-
-<ul>
+<li>First learn the basics of Hugo and how it works by following <a href="https://gohugo.io/getting-started/quick-start/">Hugo Quickstart Guide</a></li>
+<li>Once somewhat comfortable with Markdown and Hugo, choose a <a href="https://themes.gohugo.io/">template/theme</a> for your site</li>
 <li>You can create your custom theme as well.</li>
-</ul></li>
 <li>After choosing a theme, customize your site based on your need.</li>
-<li>Verify your site locally at <a href="http://localhost:1313" target="_blank">http://localhost:1313</a> (Assuming you did not change the config)</li>
+<li>Verify your site locally at http://localhost:1313 (Assuming you did not change the config)</li>
 <li>At this point, your stack is setup to build your site locally.</li>
 <li>Finish multiple iterations of changes till you are satisfied with the website you want to build.</li>
 </ul>
-
 <h3 id="deployment">Deployment</h3>
-
 <ul>
 <li>Once site is built, it is time to host and deploy it somewhere.</li>
 </ul>
-
 <h5 id="hosting">Hosting</h5>
-
 <ul>
 <li>There are multiple options to host your static website. Eg: Github pages, BitBucket, Netlify, GitLab</li>
-<li>In my case, I used GitHub Pages and deployed site at - <a href="http://hpj1992.github.io/" target="_blank">hpj1992.github.io</a></li>
+<li>In my case, I used GitHub Pages and deployed site at - <a href="http://hpj1992.github.io/">hpj1992.github.io</a></li>
 <li>I use this site as a pre-production/staging environment for my site.</li>
-<li>Not including detailed information because there plenty of resources available online. <a href="https://gohugo.io/hosting-and-deployment/" target="_blank">Hugo instructions on hosting and deployment.</a></li>
+<li>Not including detailed information because there plenty of resources available online. <a href="https://gohugo.io/hosting-and-deployment/">Hugo instructions on hosting and deployment.</a></li>
 </ul>
-
 <h5 id="domain">Domain</h5>
-
 <ul>
 <li>Once you figure out the hosting issues, it is time to purchase a domain for your website.</li>
 <li>If you do not want specifc domain - which is perfectly valid - you can start sharing links from your hosted environment.</li>
 <li>If you do decide to purchase a domain, there are multiple options in this case as well and the best option varies based on individual. Eg: GoDaddy, Bluehost etc</li>
-<li>Some <a href="https://www.predictiveanalyticstoday.com/domain-registration-providers/" target="_blank">well known domain providers are listed here.</a></li>
-<li>I selected a domain with name:
-
-<ul>
+<li>Some <a href="https://www.predictiveanalyticstoday.com/domain-registration-providers/">well known domain providers are listed here.</a></li>
+<li>I selected a domain with name:</li>
 <li>Domain registration for 1 year with auto-renewel. Paid $10/year.</li>
 <li>Privacy protection for domain for 1 year. Paid $10/year.</li>
 <li>Did not opt for HTTPS certificate because I do not need it currently.</li>
-</ul></li>
-<li>Followed this youtube tutorial to <a href="https://youtu.be/mPGi1IHQxFM" target="_blank">link my GoDaddy domain to Github Pages.</a></li>
+<li>Followed this youtube tutorial to <a href="https://youtu.be/mPGi1IHQxFM">link my GoDaddy domain to Github Pages.</a></li>
 </ul>
-
 <h3 id="end-result">End Result</h3>
-
 <ul>
-<li><a href="http://joshiharshit.com/" target="_blank">http://joshiharshit.com/</a></li>
+<li><a href="http://joshiharshit.com/">http://joshiharshit.com/</a></li>
 </ul>
 ]]></content>
         </item>
