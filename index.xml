@@ -2,16 +2,22 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Harshit Joshi</title>
-    <link>/</link>
+    <link>/index.html</link>
     <description>Recent content on Harshit Joshi</description>
     <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language>
-    <lastBuildDate>Sun, 03 Nov 2019 00:00:00 +0000</lastBuildDate><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <language>en-us</language><atom:link href="/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>Personal Website 101</title>
-      <link>/posts/2019/11/personal-website-101/</link>
-      <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
+      <title>Tags</title>
+      <link>/tags/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
+      <guid>/tags/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
+     
       <guid>/posts/2019/11/personal-website-101/</guid>
       <description>Motivation There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:
  Personal Branding Blog Space Makes you discoverable on internet One stop resume which works for you Helps you learn new skills while building  Tech Stack  Hugo Static Site Builder Plenty of themplates available at Hugo Themes Hosting at Github Pages Domain from Godaddy  Steps  First learn the basics of Hugo and how it works by following Hugo Quickstart Guide Once somewhat comfortable with Markdown and Hugo, choose a template/theme for your site You can create your custom theme as well.</description>
