@@ -4,7 +4,7 @@
         <link>/posts/</link>
         <description>Recent content in Posts on Harshit Joshi</description>
         <generator>Hugo -- gohugo.io</generator>
-        <language>en-us</language>
+        <language>en</language>
         <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
         
@@ -14,51 +14,40 @@
             <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
             
             <guid>/posts/2021/02/professional-programmer-the-clean-coder/</guid>
-            <description>In The Clean Coder: A Code of Conduct for Professional Programmers, legendary software expert Robert C. Martin introduces the disciplines, techniques, tools, and practices of true software craftsmanship. This book is packed with practical advice–about everything from estimating and coding to refactoring and testing. It covers much more than technique: It is about attitude.
-In this article, I have tried to summarize key insights from the book, carefully picking key advices from each chapter.</description>
+            <description>&lt;p&gt;In &lt;a href=&#34;https://www.amazon.com/dp/0137081073/ref=cm_sw_em_r_mt_dp_40RD8RQ0KB2XD4A5BFHM&#34;&gt;The Clean Coder: A Code of Conduct for Professional Programmers&lt;/a&gt;, legendary software expert Robert C. Martin introduces the disciplines, techniques, tools, and practices of true software craftsmanship. This book is packed with practical advice–about everything from estimating and coding to refactoring and testing. It covers much more than technique: It is about attitude.&lt;/p&gt;
+&lt;p&gt;In this article, I have tried to summarize key insights from the book, carefully picking key advices from each chapter.&lt;/p&gt;</description>
             <content type="html"><![CDATA[<p>In <a href="https://www.amazon.com/dp/0137081073/ref=cm_sw_em_r_mt_dp_40RD8RQ0KB2XD4A5BFHM">The Clean Coder: A Code of Conduct for Professional Programmers</a>, legendary software expert Robert C. Martin introduces the disciplines, techniques, tools, and practices of true software craftsmanship. This book is packed with practical advice–about everything from estimating and coding to refactoring and testing. It covers much more than technique: It is about attitude.</p>
 <p>In this article, I have tried to summarize key insights from the book, carefully picking key advices from each chapter.</p>
 <h2 id="1-minute-summary">1 Minute Summary</h2>
 <p>If you do not have time to read detailed summary below, just try to apply below points on your software engineering life:</p>
 <blockquote>
-<p>You can not take pride and honor in something that you can not be held accountable for. Any code you are not certain about is a faulty code.</p>
-</blockquote>
+<p>You can not take pride and honor in something that you can not be held accountable for. Any code you are not certain about is a faulty code.</p></blockquote>
 <blockquote>
-<p>When the cost of failure is so high that survival of your company depends upon it, you must be absolutely determined to give your managers the best information you can. and that often means saying no.</p>
-</blockquote>
+<p>When the cost of failure is so high that survival of your company depends upon it, you must be absolutely determined to give your managers the best information you can. and that often means saying no.</p></blockquote>
 <blockquote>
-<p>There are three parts of saying yes. You <em>say</em> that you will do it. You <em>mean</em> it. And you actually <em>do</em> it.</p>
-</blockquote>
+<p>There are three parts of saying yes. You <em>say</em> that you will do it. You <em>mean</em> it. And you actually <em>do</em> it.</p></blockquote>
 <blockquote>
-<p>Programing is hard. The younger you are the less you believe this. You have to carefully partition the system into small understandable units that have as little to do with each other as possible - and <em>that is hard</em>.</p>
-</blockquote>
+<p>Programing is hard. The younger you are the less you believe this. You have to carefully partition the system into small understandable units that have as little to do with each other as possible - and <em>that is hard</em>.</p></blockquote>
 <blockquote>
-<p>It is often difficult to test a function if that function calls other functions. In other words, the need to test first forces you to think about good design.</p>
-</blockquote>
+<p>It is often difficult to test a function if that function calls other functions. In other words, the need to test first forces you to think about good design.</p></blockquote>
 <blockquote>
-<p>When performance matters, professionals practice. Doing anything quickly requires practice.</p>
-</blockquote>
+<p>When performance matters, professionals practice. Doing anything quickly requires practice.</p></blockquote>
 <blockquote>
-<p>To make good on the goal that &ldquo;QA should find nothing&rdquo;, development teams need to work hand in hand with QA to define testing strategies.</p>
-</blockquote>
+<p>To make good on the goal that &ldquo;QA should find nothing&rdquo;, development teams need to work hand in hand with QA to define testing strategies.</p></blockquote>
 <blockquote>
-<p>Software professionals keep their options open by keeping an open mind about alternate solutions. They never become so vested in a solution that they can not abandon it.</p>
-</blockquote>
+<p>Software professionals keep their options open by keeping an open mind about alternate solutions. They never become so vested in a solution that they can not abandon it.</p></blockquote>
 <blockquote>
-<p>Most software is created by teams. Teams are most effective when the team members collaborate professionally.</p>
-</blockquote>
+<p>Most software is created by teams. Teams are most effective when the team members collaborate professionally.</p></blockquote>
 <blockquote>
-<p>Teams are harder to build than projects.</p>
-</blockquote>
+<p>Teams are harder to build than projects.</p></blockquote>
 <blockquote>
-<p>School can teach the theory of computer programming, but school does not and can not teach the discipline, practice, and skill of being craftsman.</p>
-</blockquote>
+<p>School can teach the theory of computer programming, but school does not and can not teach the discipline, practice, and skill of being craftsman.</p></blockquote>
 <h2 id="lets-understand-more">Let&rsquo;s Understand More</h2>
 <h3 id="professionalism">Professionalism</h3>
 <p>Professionals take responsibilities. You can not take pride and honor in something that you can not be held accountable for. Take responsibility to complete the clean code on time, and if not possible, take responsibility to communicate early. Shipping incomplete/faulty code/build is bound to fail. Any code you are not certain about is a faulty code. Only way to avoid it is to test, test and retest. QA should find nothing. And if it is hard to test, refactor/rewrite. They key thing is to keep your hands dirty in code all the time. The more changes you make, the more you know the code. The more you test, the better you estimate. Repeat this cycle all the time.</p>
 <h3 id="saying-no">Saying NO</h3>
-<p>When your manager tells you that X module has to be ready by tomorrow, he is pursuing and defending one of his objectives. He is doing his job. If you know well that getting X by tomorrow is impossible, then you are not doing your job if you say <em>&ldquo;Ok, I will try. I might work extra hours&rdquo;</em>. The only way to do your job, at that point, is to say <em>&ldquo;No, that is impossible.&quot;</em> Your manager is counting on your to defend your objectives as aggressively as he defends his. That is how the two of you are going to get to the best possible outcome.</p>
-<pre><code>The most important time to say no is when the stakes are highest. The higher the stakes, the more valuable no becomes.
+<p>When your manager tells you that X module has to be ready by tomorrow, he is pursuing and defending one of his objectives. He is doing his job. If you know well that getting X by tomorrow is impossible, then you are not doing your job if you say <em>&ldquo;Ok, I will try. I might work extra hours&rdquo;</em>. The only way to do your job, at that point, is to say <em>&ldquo;No, that is impossible.&rdquo;</em> Your manager is counting on your to defend your objectives as aggressively as he defends his. That is how the two of you are going to get to the best possible outcome.</p>
+<pre tabindex="0"><code>The most important time to say no is when the stakes are highest. The higher the stakes, the more valuable no becomes.
 </code></pre><p>Temptation to jump start and &ldquo;solve the problem&rdquo; is huge. What we all have to realize is that saying yes to dropping our professional discipline is not the way to solve problems. Dropping those disciplines is the way you create problems. Despite years of constant reminders that every feature a client/manager asks for will always be more complex to write than it is to explain. As a developers, we are going to be asked/told to write twice the code in half the time if we are not careful.</p>
 <h3 id="saying-yes">Saying YES</h3>
 <p>Professionals are not required to say yes to everything that is asked of them. However, they should work hard to find creative ways to make &ldquo;yes&rdquo; possible. When professionals say yes, they use language of commitment so that there is no doubt about what they have promised. There are three parts of saying yes:</p>
@@ -82,7 +71,7 @@ that case, it is time to change the expectations, as soon as possible. If you ca
 <ul>
 <li>Make sure that your sleep, health and lifestyle are tunes so that you can put in eight good hours per day.</li>
 <li>Non work related worries affect your work. Partition the time. Rather than forcing yourself to code while the background worry is nagging you, spend dedicated block of time, handling the worry.</li>
-<li>Like me, many engineers love <a href="https://en.wikipedia.org/wiki/Flow_(psychology)">the flow zone</a>. Reality is, you lose some of the big picture while you are in the Zone, so you will likely make decisions that you will later have to go back and reverse.</li>
+<li>Like me, many engineers love <a href="https://en.wikipedia.org/wiki/Flow_%28psychology%29">the flow zone</a>. Reality is, you lose some of the big picture while you are in the Zone, so you will likely make decisions that you will later have to go back and reverse.</li>
 <li><em>Disengagement</em> from work allows your mind to hunt for solutions in a different and more creative way.</li>
 </ul>
 <p>Even after following all best practices mentioned above, we might fall short while coding. We will be late. It happens to the best of us. The trick to managing lateness is early detection and transparency. Top recommendations to avoid running late on work:</p>
@@ -109,7 +98,7 @@ that case, it is time to change the expectations, as soon as possible. If you ca
 <p>Round and round the cycle you go. Adding a bit to the test code. Adding a bit to the production code.</p>
 <h3 id="practicing">Practicing</h3>
 <p>When performance matters, professionals practice. Doing anything quickly requires practice. Spinning around code/test loop quickly requires you to make very quick decisions. Making decisions quickly means being able to recognize a vast number of situations and problem and simply know what to do to address them.</p>
-<p>There are various ways developer can keep practicing, weekly/monthly sessions to solve some of the well known problems. <a href="https://en.wikipedia.org/wiki/Kata_(programming)">Kata programming</a> is an exercise in programming which helps programmers hone their skills through practice and repetition.</p>
+<p>There are various ways developer can keep practicing, weekly/monthly sessions to solve some of the well known problems. <a href="https://en.wikipedia.org/wiki/Kata_%28programming%29">Kata programming</a> is an exercise in programming which helps programmers hone their skills through practice and repetition.</p>
 <p>In one way or another, all professionals practice. They do this because they care about doing the best job they possibly can. They practice on their own time because it is their responsibility - and not their employer&rsquo;s - to keep their skills sharp.</p>
 <h3 id="acceptance-testing">Acceptance Testing</h3>
 <p>Both business and programmers are tempted to fall into the trap of <em>premature precision</em>. Business people want to know exactly what they are going to get before they authorize a project. Developers want to know exactly what they are supposed to deliver before they estimate the project. Both sides want a precision that simply can not be achieved, and are often willing to waste a fortune trying to attain it. The solution to premature precision is to defer precision as long as possible. Professional developers do not flesh out a requirement until they are just about to develop it. However, it can lead to another problem: <em>late ambiguity</em>. Late ambiguity is a term which represents some requirements missed or discovered late in the development cycle. This type of late ambiguity can result into missing dates or delivering imperfect product. Solution to both those problems is to define <strong>Acceptance Tests</strong>. Acceptance tests are not QA tests, these are tests written by a collaboration of the stakeholders and the programmers in order to define when a requirement is done.</p>
@@ -142,7 +131,7 @@ Image by <a href="https://www.google.com/url?sa=i&amp;url=https%3A%2F%2Fcodingjo
 <ul>
 <li>Meetings cost about $200 per hour per attendee, considering salaries, benefit, facilities etc. Professions are aware of the high cost and aware of their time, so they actively resist attending meetings that they do not have an immediate and significant benefit.</li>
 <li>You have an obligation to manage your time well. If you find yourself stuck in a meeting that is not a good use of your time, you need to find a way to politely exit that meeting.</li>
-<li>To use the participants' time wisely, the meeting should have a clear agenda with times for each topic and stated goal.</li>
+<li>To use the participants&rsquo; time wisely, the meeting should have a clear agenda with times for each topic and stated goal.</li>
 <li>Standup meeting should not take more 1 minute for each participant.</li>
 <li>Sprint/Iteration planning should not take more than 5% of total duration of entire sprint. ie 2 hours for 40 hour sprint planning.</li>
 <li>Any argument that can not be settled in five minutes, can not be settled by arguing.</li>
@@ -174,8 +163,59 @@ The first responsibility of the professional programmer is to meet the needs of 
             <pubDate>Sun, 03 Nov 2019 00:00:00 +0000</pubDate>
             
             <guid>/posts/2019/11/personal-website-101/</guid>
-            <description>Motivation There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:
- Personal Branding Blog Space Makes you discoverable on internet One stop resume which works for you Helps you learn new skills while building  Tech Stack  Hugo Static Site Builder Plenty of themplates available at Hugo Themes Hosting at Github Pages Domain from Godaddy  Steps  First learn the basics of Hugo and how it works by following Hugo Quickstart Guide Once somewhat comfortable with Markdown and Hugo, choose a template/theme for your site You can create your custom theme as well.</description>
+            <description>&lt;h3 id=&#34;motivation&#34;&gt;Motivation&lt;/h3&gt;
+&lt;p&gt;There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Personal Branding&lt;/li&gt;
+&lt;li&gt;Blog Space&lt;/li&gt;
+&lt;li&gt;Makes you discoverable on internet&lt;/li&gt;
+&lt;li&gt;One stop resume which works for you&lt;/li&gt;
+&lt;li&gt;Helps you learn new skills while building&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;tech-stack&#34;&gt;Tech Stack&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://gohugo.io/&#34;&gt;Hugo Static Site Builder&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Plenty of themplates available at &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;Hugo Themes&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Hosting at &lt;a href=&#34;https://pages.github.com/&#34;&gt;Github Pages&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Domain from &lt;a href=&#34;https://www.godaddy.com/&#34;&gt;Godaddy&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;steps&#34;&gt;Steps&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;First learn the basics of Hugo and how it works by following &lt;a href=&#34;https://gohugo.io/getting-started/quick-start/&#34;&gt;Hugo Quickstart Guide&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Once somewhat comfortable with Markdown and Hugo, choose a &lt;a href=&#34;https://themes.gohugo.io/&#34;&gt;template/theme&lt;/a&gt; for your site&lt;/li&gt;
+&lt;li&gt;You can create your custom theme as well.&lt;/li&gt;
+&lt;li&gt;After choosing a theme, customize your site based on your need.&lt;/li&gt;
+&lt;li&gt;Verify your site locally at http://localhost:1313 (Assuming you did not change the config)&lt;/li&gt;
+&lt;li&gt;At this point, your stack is setup to build your site locally.&lt;/li&gt;
+&lt;li&gt;Finish multiple iterations of changes till you are satisfied with the website you want to build.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;deployment&#34;&gt;Deployment&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;Once site is built, it is time to host and deploy it somewhere.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;hosting&#34;&gt;Hosting&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;There are multiple options to host your static website. Eg: Github pages, BitBucket, Netlify, GitLab&lt;/li&gt;
+&lt;li&gt;In my case, I used GitHub Pages and deployed site at - &lt;a href=&#34;http://hpj1992.github.io/&#34;&gt;hpj1992.github.io&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I use this site as a pre-production/staging environment for my site.&lt;/li&gt;
+&lt;li&gt;Not including detailed information because there plenty of resources available online. &lt;a href=&#34;https://gohugo.io/hosting-and-deployment/&#34;&gt;Hugo instructions on hosting and deployment.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h5 id=&#34;domain&#34;&gt;Domain&lt;/h5&gt;
+&lt;ul&gt;
+&lt;li&gt;Once you figure out the hosting issues, it is time to purchase a domain for your website.&lt;/li&gt;
+&lt;li&gt;If you do not want specifc domain - which is perfectly valid - you can start sharing links from your hosted environment.&lt;/li&gt;
+&lt;li&gt;If you do decide to purchase a domain, there are multiple options in this case as well and the best option varies based on individual. Eg: GoDaddy, Bluehost etc&lt;/li&gt;
+&lt;li&gt;Some &lt;a href=&#34;https://www.predictiveanalyticstoday.com/domain-registration-providers/&#34;&gt;well known domain providers are listed here.&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;I selected a domain with name:&lt;/li&gt;
+&lt;li&gt;Domain registration for 1 year with auto-renewel. Paid $10/year.&lt;/li&gt;
+&lt;li&gt;Privacy protection for domain for 1 year. Paid $10/year.&lt;/li&gt;
+&lt;li&gt;Did not opt for HTTPS certificate because I do not need it currently.&lt;/li&gt;
+&lt;li&gt;Followed this youtube tutorial to &lt;a href=&#34;https://youtu.be/mPGi1IHQxFM&#34;&gt;link my GoDaddy domain to Github Pages.&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3 id=&#34;end-result&#34;&gt;End Result&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://joshiharshit.com/&#34;&gt;http://joshiharshit.com/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</description>
             <content type="html"><![CDATA[<h3 id="motivation">Motivation</h3>
 <p>There is no need to explain the benefits of personal website or a porfolio site, still, I would note down some:</p>
 <ul>
