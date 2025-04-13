@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Books on Harshit Joshi</title>
+    <link>/series/books/</link>
+    <description>Recent content in Books on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/series/books/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Professional Programmer - The Clean Coder</title>
+      <link>/posts/2021/02/professional-programmer-the-clean-coder/</link>
+      <pubDate>Mon, 15 Feb 2021 00:00:00 +0000</pubDate>
+      <guid>/posts/2021/02/professional-programmer-the-clean-coder/</guid>
+      <description>&lt;p&gt;In &lt;a href=&#34;https://www.amazon.com/dp/0137081073/ref=cm_sw_em_r_mt_dp_40RD8RQ0KB2XD4A5BFHM&#34;&gt;The Clean Coder: A Code of Conduct for Professional Programmers&lt;/a&gt;, legendary software expert Robert C. Martin introduces the disciplines, techniques, tools, and practices of true software craftsmanship. This book is packed with practical advice–about everything from estimating and coding to refactoring and testing. It covers much more than technique: It is about attitude.&lt;/p&gt;&#xA;&lt;p&gt;In this article, I have tried to summarize key insights from the book, carefully picking key advices from each chapter.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
