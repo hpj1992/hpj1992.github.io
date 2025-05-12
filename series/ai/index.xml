@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>AI on Harshit Joshi</title>
+    <link>/series/ai/</link>
+    <description>Recent content in AI on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 05 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/series/ai/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Diving Deep on model optimization parameters using llama.cpp</title>
+      <link>/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ggml-org/llama.cpp&#34;&gt;llama.cpp&lt;/a&gt; is a powerful C++ implementation of the LLaMA model that allows you to run large language models locally on your machine. In previous article &lt;a href=&#34;/posts/2025/05/working-with-llama.cpp-locally/&#34;&gt;Working with LLAMA-CPP Locally&lt;/a&gt;, we explored how to setup LLAMA.cpp locally. In this article, we will explore how 1) Quantization 2) Thread Count 3) Context Window and 4) Temprature affect the output and performance.&lt;/p&gt;&#xA;&lt;p&gt;I have included LLM responses for each parameter for better comparision. Feel free to skip those response. They are purely for comparision purposes.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Working with llama.cpp Locally</title>
+      <link>/posts/2025/05/working-with-llama.cpp-locally/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/2025/05/working-with-llama.cpp-locally/</guid>
+      <description>&lt;h3 id=&#34;introduction&#34;&gt;Introduction&lt;/h3&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://github.com/ggml-org/llama.cpp&#34;&gt;llama.cpp&lt;/a&gt; is a powerful C++ implementation of the LLaMA model that allows you to run large language models locally on your machine. This guide will walk you through the process of setting up and using llama.cpp effectively. Official github repo has enough details, however I have still more granular steps here and sample outputs.&lt;/p&gt;&#xA;&lt;h3 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h3&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;C++ compiler (GCC or Clang)&lt;/li&gt;&#xA;&lt;li&gt;CMake&lt;/li&gt;&#xA;&lt;li&gt;Git&lt;/li&gt;&#xA;&lt;li&gt;Sufficient disk space for model weights&lt;/li&gt;&#xA;&lt;li&gt;Adequate RAM (8GB minimum recommended)&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;installation-steps&#34;&gt;Installation Steps&lt;/h3&gt;&#xA;&lt;ol&gt;&#xA;&lt;li&gt;Clone the repository:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;git clone https://github.com/ggerganov/llama.cpp.git&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd llama.cpp&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;ol start=&#34;2&#34;&gt;&#xA;&lt;li&gt;Build the project:&lt;/li&gt;&#xA;&lt;/ol&gt;&#xA;&lt;div class=&#34;highlight&#34;&gt;&lt;pre tabindex=&#34;0&#34; style=&#34;color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;&#34;&gt;&lt;code class=&#34;language-bash&#34; data-lang=&#34;bash&#34;&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;mkdir build&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cd build&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cmake ..&#xA;&lt;/span&gt;&lt;/span&gt;&lt;span style=&#34;display:flex;&#34;&gt;&lt;span&gt;cmake --build . --config Release&#xA;&lt;/span&gt;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;h3 id=&#34;downloading-models&#34;&gt;Downloading Models&lt;/h3&gt;&#xA;&lt;p&gt;You can download various LLaMA models from Hugging Face. Here are multiple methods:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

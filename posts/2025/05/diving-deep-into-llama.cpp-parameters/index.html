@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="map[name:Harshit Joshi]">
+<meta name="description" content=" This article is part of a series. Check out Working with llama.cpp Locally for the previous article.
+Introduction In this article, we&rsquo;ll dive deep into the various parameters and configurations available in llama.cpp. Understanding these parameters is crucial for optimizing model performance and output quality for your specific use case.
+Model Architecture Parameters Context Window Size # Different context window sizes ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 512 # Small context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 2048 # Medium context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 4096 # Large context Impact on Performance:
+" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="//localhost:1313/posts/2025/05/diving-deep-into-llama.cpp-parameters/" />
+
+
+    <title>
+        
+            Diving Deep into llama.cpp Parameters :: Harshit Joshi 
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="//localhost:1313/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css" integrity="sha256-JEGDzeGjjgsI&#43;CwReRGBKI&#43;arBzJYYzW9OnncQxXaLo=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="//localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="//localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+
+  <meta itemprop="name" content="Diving Deep into llama.cpp Parameters">
+  <meta itemprop="description" content="This article is part of a series. Check out Working with llama.cpp Locally for the previous article.
+Introduction In this article, we’ll dive deep into the various parameters and configurations available in llama.cpp. Understanding these parameters is crucial for optimizing model performance and output quality for your specific use case.
+Model Architecture Parameters Context Window Size # Different context window sizes ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 512 # Small context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 2048 # Medium context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 4096 # Large context Impact on Performance:">
+  <meta itemprop="datePublished" content="2025-05-06T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-06T00:00:00+00:00">
+  <meta itemprop="wordCount" content="669">
+  <meta itemprop="keywords" content="AI,LLM">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Diving Deep into llama.cpp Parameters">
+  <meta name="twitter:description" content="This article is part of a series. Check out Working with llama.cpp Locally for the previous article.
+Introduction In this article, we’ll dive deep into the various parameters and configurations available in llama.cpp. Understanding these parameters is crucial for optimizing model performance and output quality for your specific use case.
+Model Architecture Parameters Context Window Size # Different context window sizes ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 512 # Small context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 2048 # Medium context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 4096 # Large context Impact on Performance:">
+
+
+
+    <meta property="og:url" content="//localhost:1313/posts/2025/05/diving-deep-into-llama.cpp-parameters/">
+  <meta property="og:site_name" content="Harshit Joshi">
+  <meta property="og:title" content="Diving Deep into llama.cpp Parameters">
+  <meta property="og:description" content="This article is part of a series. Check out Working with llama.cpp Locally for the previous article.
+Introduction In this article, we’ll dive deep into the various parameters and configurations available in llama.cpp. Understanding these parameters is crucial for optimizing model performance and output quality for your specific use case.
+Model Architecture Parameters Context Window Size # Different context window sizes ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 512 # Small context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 2048 # Medium context ./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c 4096 # Large context Impact on Performance:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-06T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-06T00:00:00+00:00">
+      <meta property="og:see_also" content="//localhost:1313/posts/2025/05/working-with-llama.cpp-locally/">
+      <meta property="og:see_also" content="//localhost:1313/posts/2025/05/working-with-llama.cpp-locally/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2025-05-06 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6EYX1WEB9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6EYX1WEB9');
+        }
+      </script>
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="//localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ~/home</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="//localhost:1313/about">About</a></li><li><a href="//localhost:1313/posts">Blogs</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="//localhost:1313/posts/2025/05/diving-deep-into-llama.cpp-parameters/">Diving Deep into llama.cpp Parameters</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <blockquote>
+<p>This article is part of a series. Check out <a href="//localhost:1313/posts/2025/05/working-with-llama.cpp-locally/">Working with llama.cpp Locally</a> for the previous article.</p></blockquote>
+<h3 id="introduction">Introduction</h3>
+<p>In this article, we&rsquo;ll dive deep into the various parameters and configurations available in llama.cpp. Understanding these parameters is crucial for optimizing model performance and output quality for your specific use case.</p>
+<h3 id="model-architecture-parameters">Model Architecture Parameters</h3>
+<ol>
+<li><strong>Context Window Size</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different context window sizes</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c <span style="color:#ae81ff">512</span>  <span style="color:#75715e"># Small context</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c <span style="color:#ae81ff">2048</span> <span style="color:#75715e"># Medium context</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -c <span style="color:#ae81ff">4096</span> <span style="color:#75715e"># Large context</span>
+</span></span></code></pre></div><p>Impact on Performance:</p>
+<ul>
+<li>Memory Usage:
+<ul>
+<li>512 tokens: ~1GB RAM</li>
+<li>2048 tokens: ~2GB RAM</li>
+<li>4096 tokens: ~4GB RAM</li>
+</ul>
+</li>
+<li>Generation Speed:
+<ul>
+<li>Smaller contexts are faster to process</li>
+<li>Larger contexts allow for more coherent long-form generation</li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li><strong>Thread Count Optimization</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different thread configurations</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -t <span style="color:#ae81ff">2</span>  <span style="color:#75715e"># Low thread count</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -t <span style="color:#ae81ff">8</span>  <span style="color:#75715e"># Medium thread count</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf -t <span style="color:#ae81ff">16</span> <span style="color:#75715e"># High thread count</span>
+</span></span></code></pre></div><p>Performance Metrics (Apple M1 Pro):</p>
+<ul>
+<li>2 threads:
+<ul>
+<li>~15 tokens/second</li>
+<li>Load time: 2359.67 ms</li>
+<li>Eval time: 42.39 ms/token</li>
+</ul>
+</li>
+<li>8 threads:
+<ul>
+<li>~40 tokens/second</li>
+<li>Load time: 1346.89 ms</li>
+<li>Eval time: 40.63 ms/token</li>
+</ul>
+</li>
+<li>16 threads:
+<ul>
+<li>~45 tokens/second</li>
+<li>Load time: 1346.89 ms</li>
+<li>Eval time: 40.63 ms/token</li>
+</ul>
+</li>
+</ul>
+<h3 id="generation-parameters">Generation Parameters</h3>
+<ol>
+<li><strong>Temperature and Sampling</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different temperature settings</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --temp 0.1  <span style="color:#75715e"># Low temperature</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --temp 0.8  <span style="color:#75715e"># Medium temperature</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --temp 1.2  <span style="color:#75715e"># High temperature</span>
+</span></span></code></pre></div><p>Output Characteristics:</p>
+<ul>
+<li>temp 0.1: More deterministic, focused outputs</li>
+<li>temp 0.8: Balanced creativity and coherence</li>
+<li>temp 1.2: More creative but potentially less focused</li>
+</ul>
+<ol start="2">
+<li><strong>Top-k and Top-p Sampling</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different sampling configurations</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --top-k <span style="color:#ae81ff">10</span> --top-p 0.5  <span style="color:#75715e"># Conservative</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --top-k <span style="color:#ae81ff">40</span> --top-p 0.95 <span style="color:#75715e"># Balanced</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --top-k <span style="color:#ae81ff">100</span> --top-p 0.98 <span style="color:#75715e"># Creative</span>
+</span></span></code></pre></div><p>Sampling Effects:</p>
+<ul>
+<li>Conservative (top-k=10, top-p=0.5):
+<ul>
+<li>More predictable outputs</li>
+<li>Better for factual responses</li>
+<li>Lower chance of hallucinations</li>
+</ul>
+</li>
+<li>Balanced (top-k=40, top-p=0.95):
+<ul>
+<li>Good mix of creativity and coherence</li>
+<li>Suitable for most use cases</li>
+<li>Reliable output quality</li>
+</ul>
+</li>
+<li>Creative (top-k=100, top-p=0.98):
+<ul>
+<li>More diverse outputs</li>
+<li>Higher creativity</li>
+<li>May require more post-processing</li>
+</ul>
+</li>
+</ul>
+<h3 id="advanced-parameters">Advanced Parameters</h3>
+<ol>
+<li><strong>Repeat Penalty</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different repeat penalty settings</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --repeat-penalty 1.0  <span style="color:#75715e"># Default</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --repeat-penalty 1.2  <span style="color:#75715e"># Increased</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --repeat-penalty 0.8  <span style="color:#75715e"># Decreased</span>
+</span></span></code></pre></div><p>Effects:</p>
+<ul>
+<li>Higher values reduce repetition</li>
+<li>Lower values allow more natural repetition</li>
+<li>Useful for creative writing vs. factual responses</li>
+</ul>
+<ol start="2">
+<li><strong>Frequency and Presence Penalties</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span><span style="color:#75715e"># Different penalty configurations</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --frequency-penalty 0.0 --presence-penalty 0.0  <span style="color:#75715e"># None</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --frequency-penalty 0.5 --presence-penalty 0.5  <span style="color:#75715e"># Moderate</span>
+</span></span><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf --frequency-penalty 1.0 --presence-penalty 1.0  <span style="color:#75715e"># Strong</span>
+</span></span></code></pre></div><p>Impact:</p>
+<ul>
+<li>Frequency penalty: Reduces repetition of specific tokens</li>
+<li>Presence penalty: Encourages use of new tokens</li>
+<li>Combined effect: More diverse vocabulary</li>
+</ul>
+<h3 id="recommended-configurations">Recommended Configurations</h3>
+<ol>
+<li><strong>Code Generation</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -t <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -c <span style="color:#ae81ff">2048</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --temp 0.2 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-k <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-p 0.95 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --repeat-penalty 1.1
+</span></span></code></pre></div><ul>
+<li>Low temperature for consistent code</li>
+<li>Medium context for function definitions</li>
+<li>Balanced sampling for reliable outputs</li>
+<li>Slight repeat penalty to avoid redundant code</li>
+</ul>
+<ol start="2">
+<li><strong>Creative Writing</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -t <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -c <span style="color:#ae81ff">4096</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --temp 1.0 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-k <span style="color:#ae81ff">100</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-p 0.98 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --frequency-penalty 0.5 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --presence-penalty 0.5
+</span></span></code></pre></div><ul>
+<li>Higher temperature for creativity</li>
+<li>Larger context for longer pieces</li>
+<li>More permissive sampling</li>
+<li>Moderate penalties for diverse vocabulary</li>
+</ul>
+<ol start="3">
+<li><strong>Question Answering</strong></li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>./build/bin/llama-cli -m models/mistral-7b-v0.1.Q4_K_M.gguf <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -t <span style="color:#ae81ff">8</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  -c <span style="color:#ae81ff">2048</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --temp 0.7 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-k <span style="color:#ae81ff">40</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --top-p 0.9 <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>  --repeat-penalty 1.0
+</span></span></code></pre></div><ul>
+<li>Medium temperature for balanced responses</li>
+<li>Standard context size</li>
+<li>Conservative sampling for accuracy</li>
+<li>Default repeat penalty</li>
+</ul>
+<h3 id="performance-monitoring">Performance Monitoring</h3>
+<ol>
+<li><strong>Memory Usage</strong></li>
+</ol>
+<ul>
+<li>Monitor GPU memory with <code>nvidia-smi</code> or Activity Monitor</li>
+<li>Watch for memory spikes during generation</li>
+<li>Adjust context size based on available memory</li>
+</ul>
+<ol start="2">
+<li><strong>Generation Speed</strong></li>
+</ol>
+<ul>
+<li>Track tokens per second</li>
+<li>Monitor evaluation time per token</li>
+<li>Optimize thread count based on CPU cores</li>
+</ul>
+<ol start="3">
+<li><strong>Output Quality</strong></li>
+</ol>
+<ul>
+<li>Compare outputs with different parameters</li>
+<li>Track coherence and relevance</li>
+<li>Monitor for hallucinations or repetition</li>
+</ul>
+<h3 id="conclusion">Conclusion</h3>
+<p>Understanding and properly configuring llama.cpp parameters is essential for getting the best results from your local LLM. The right combination of parameters can significantly impact both performance and output quality. Experiment with different settings to find the optimal configuration for your specific use case.</p>
+<blockquote>
+<p>Next in the series: Coming soon&hellip;</p></blockquote>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        669 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2025-05-05 17:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="//localhost:1313/posts/2025/05/working-with-llama.cpp-locally/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Working with llama.cpp Locally</span>
+                </a>
+            </span>
+            
+
+            
+        </div>
+    </div>
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "joshiharshit-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025</span>
+            <span><a href="//localhost:1313/">Harshit Joshi</a></span>
+            <span></span>
+            <span><a href="//localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>A year from now, you will wish you had started today. </br><a href="https://t.co/Wor3sMJ3DQ?amp=1">A Reason To Stop Worrying &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="//localhost:1313/bundle.min.e89fda0f29b95d33f6f4224dd9e5cf69d84aff3818be2b0d73e731689cc374261b016d17d46f8381962fb4a1577ba3017b1f23509d894f6e66431f988c00889e.js" integrity="sha512-6J/aDym5XTP29CJN2eXPadhK/zgYvisNc&#43;cxaJzDdCYbAW0X1G&#43;DgZYvtKFXe6MBex8jUJ2JT25mQx&#43;YjACIng=="></script>
+
+
+
+
+    </body>
+</html>

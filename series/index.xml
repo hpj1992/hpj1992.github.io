@@ -6,8 +6,22 @@
     <description>Recent content in Series on Harshit Joshi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Mon, 15 Feb 2021 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 05 May 2025 00:00:00 +0000</lastBuildDate>
     <atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>AI</title>
+      <link>/series/ai/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>/series/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>LLM</title>
+      <link>/series/llm/</link>
+      <pubDate>Mon, 05 May 2025 00:00:00 +0000</pubDate>
+      <guid>/series/llm/</guid>
+      <description></description>
+    </item>
     <item>
       <title>Books</title>
       <link>/series/books/</link>

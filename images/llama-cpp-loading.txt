@@ -1,0 +1,17 @@
+ test_cases = int(input())
+
+for i in range(test_cases):
+    n = int(input())
+
+    arr = list(map(int, input().split()))
+
+    result = 0
+
+    for j in range(n):
+        for k in range(j, n):
+            if arr[j] + arr[k] == n:
+                result += 1
+
+    print(result) [end of text]
+
+

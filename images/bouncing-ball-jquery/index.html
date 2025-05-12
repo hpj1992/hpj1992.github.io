@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="&lt;!DOCTYPE html&gt; Bouncing Ball " />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="//localhost:1313/images/bouncing-ball-jquery/" />
+
+
+    <title>
+        
+             :: Harshit Joshi 
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="//localhost:1313/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css" integrity="sha256-JEGDzeGjjgsI&#43;CwReRGBKI&#43;arBzJYYzW9OnncQxXaLo=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="//localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="//localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+
+  <meta itemprop="name" content="Harshit Joshi">
+  <meta itemprop="description" content="&lt;!DOCTYPE html&gt; Bouncing Ball">
+  <meta itemprop="wordCount" content="4">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Harshit Joshi">
+  <meta name="twitter:description" content="&lt;!DOCTYPE html&gt; Bouncing Ball">
+
+
+
+    <meta property="og:url" content="//localhost:1313/images/bouncing-ball-jquery/">
+  <meta property="og:site_name" content="Harshit Joshi">
+  <meta property="og:title" content="Harshit Joshi">
+  <meta property="og:description" content="&lt;!DOCTYPE html&gt; Bouncing Ball">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="images">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6EYX1WEB9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6EYX1WEB9');
+        }
+      </script>
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="//localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ~/home</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="//localhost:1313/about">About</a></li><li><a href="//localhost:1313/posts">Blogs</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+    <main class="post">
+
+        <div class="post-info">
+            
+            </p>
+        </div>
+
+        <article>
+            <h2 class="post-title"><a href="//localhost:1313/images/bouncing-ball-jquery/"></a></h2>
+
+            
+            
+            
+
+            <div class="post-content">
+                <!DOCTYPE html>
+<html>
+<head>
+        <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css">
+        <title>Bouncing Ball</title>
+        <style>
+                body{
+                        font-family: Arial, sans-serif;
+                        background-color: #3f3f3f;
+                        color: #fff;
+                }
+                #container{
+                        width: 500px;
+                        height: 500px;
+                        margin: 0 auto;
+                        background-color: #fff;
+                        border-radius: 50%;
+                        position: relative;
+                }
+                #ball{
+                        width: 100px;
+                        height: 100px;
+                        border-radius: 50%;
+                        background-color: #3f3f3f;
+                        position: absolute;
+                        top: 50%;
+                        left: 50%;
+                        transform: translate(-50%, -50%);
+                }
+        </style>
+</head>
+<body>
+        <div id="container">
+                <div id="ball"></div>
+        </div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+        <script>
+                $(document).ready(function(){
+                        var ball = $("#ball");
+                        var container = $("#container");
+                        var ballLeft = container.width() / 2 - ball.width() / 2;
+                        var ballTop = container.height() / 2 - ball.height() / 2;
+                        var ballRadius = ball.width() / 2;
+                        var speed = 5;
+                        var ballSpeedX = -speed;
+                        var ballSpeedY = 0;
+                        var ballSpeed = 0;
+                        var bouncing = true;
+                        function updateBall(){
+                                if(ballLeft + ballRadius >= container.width() || ballLeft - ballRadius <= 0){
+                                        ballSpeedX = -ballSpeedX;
+                                        ballLeft += ballSpeedX;
+                                }
+                                if(ballTop + ballRadius >= container.height() || ballTop - ballRadius <= 0){
+                                        ballSpeedY = -ballSpeedY;
+                                        ballTop += ballSpeedY;
+                                }
+                                ball.css({left: ballLeft, top: ballTop});
+                                ballSpeed = Math.sqrt(Math.pow(ballSpeedX, 2) + Math.pow(ballSpeedY, 2));
+                                if(ballSpeed > 5){
+                                        ballSpeed = 5;
+                                }
+                                if(ballSpeed < 0){
+                                        ballSpeed = -ballSpeed;
+                                }
+                                if(ballSpeedX < 0 && ballSpeedY < 0){
+                                        ballSpeedX = ballSpeedY = 0;
+                                        bouncing = false;
+                                }
+                                if(ballSpeedX > 0 && ballSpeedY < 0){
+                                        ballSpeedX = ballSpeedY = 0;
+                                        bouncing = false;
+                                }
+                                if(ballSpeedX < 0 && ballSpeedY > 0){
+                                        ballSpeedX = ballSpeedY = 0;
+                                        bouncing = false;
+                                }
+                                if(ballSpeedX > 0 && ballSpeedY > 0){
+                                        ballSpeedX = ballSpeedY = 0;
+                                        bouncing = false;
+                                }
+                                if(bouncing){
+                                        ball.css({left: ballLeft, top: ballTop});
+                                }
+                        }
+                        ball.css({left: ballLeft, top: ballTop});
+                        setInterval(updateBall, 10);
+                });
+        </script>
+</body>
+</html> 
+            </div>
+        </article>
+
+        <hr />
+
+        <div class="post-info">
+            
+            
+  		</div>
+    </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025</span>
+            <span><a href="//localhost:1313/">Harshit Joshi</a></span>
+            <span></span>
+            <span><a href="//localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>A year from now, you will wish you had started today. </br><a href="https://t.co/Wor3sMJ3DQ?amp=1">A Reason To Stop Worrying &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="//localhost:1313/bundle.min.e89fda0f29b95d33f6f4224dd9e5cf69d84aff3818be2b0d73e731689cc374261b016d17d46f8381962fb4a1577ba3017b1f23509d894f6e66431f988c00889e.js" integrity="sha512-6J/aDym5XTP29CJN2eXPadhK/zgYvisNc&#43;cxaJzDdCYbAW0X1G&#43;DgZYvtKFXe6MBex8jUJ2JT25mQx&#43;YjACIng=="></script>
+
+
+
+
+    </body>
+</html>
