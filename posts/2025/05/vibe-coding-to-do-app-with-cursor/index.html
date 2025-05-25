@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="map[name:Harshit Joshi]">
+<meta name="description" content="In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that&rsquo;s redefining how we write and interact with code. In this post, I&rsquo;ll share my experience with Cursor and how it&rsquo;s transformed my coding workflow.
+What are we doing in this article? In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.
+" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="/posts/2025/05/vibe-coding-to-do-app-with-cursor/" />
+
+
+    <title>
+        
+            Vibe coding To-Do app with Cursor :: Harshit Joshi 
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css" integrity="sha256-JEGDzeGjjgsI&#43;CwReRGBKI&#43;arBzJYYzW9OnncQxXaLo=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+
+  <meta itemprop="name" content="Vibe coding To-Do app with Cursor">
+  <meta itemprop="description" content="In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that’s redefining how we write and interact with code. In this post, I’ll share my experience with Cursor and how it’s transformed my coding workflow.
+What are we doing in this article? In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.">
+  <meta itemprop="datePublished" content="2025-05-24T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-24T00:00:00+00:00">
+  <meta itemprop="wordCount" content="717">
+  <meta itemprop="keywords" content="AI,LLM,Vibe Coding,Cursor">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Vibe coding To-Do app with Cursor">
+  <meta name="twitter:description" content="In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that’s redefining how we write and interact with code. In this post, I’ll share my experience with Cursor and how it’s transformed my coding workflow.
+What are we doing in this article? In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.">
+
+
+
+    <meta property="og:url" content="/posts/2025/05/vibe-coding-to-do-app-with-cursor/">
+  <meta property="og:site_name" content="Harshit Joshi">
+  <meta property="og:title" content="Vibe coding To-Do app with Cursor">
+  <meta property="og:description" content="In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that’s redefining how we write and interact with code. In this post, I’ll share my experience with Cursor and how it’s transformed my coding workflow.
+What are we doing in this article? In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-24T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-24T00:00:00+00:00">
+      <meta property="og:see_also" content="/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/">
+      <meta property="og:see_also" content="/posts/2025/05/working-with-llama.cpp-locally/">
+      <meta property="og:see_also" content="/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/">
+      <meta property="og:see_also" content="/posts/2025/05/working-with-llama.cpp-locally/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2025-05-24 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6EYX1WEB9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6EYX1WEB9');
+        }
+      </script>
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ~/home</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="/about">About</a></li><li><a href="/posts">Blogs</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        4 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="/posts/2025/05/vibe-coding-to-do-app-with-cursor/">Vibe coding To-Do app with Cursor</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that&rsquo;s redefining how we write and interact with code. In this post, I&rsquo;ll share my experience with Cursor and how it&rsquo;s transformed my coding workflow.</p>
+<h2 id="what-are-we-doing-in-this-article">What are we doing in this article?</h2>
+<p>In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.</p>
+<p>Entire screen recording is also available for you to watch.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/k3h_jew1b38?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="experience-rating">Experience Rating</h2>
+<p>Here&rsquo;s my personal rating of Cursor&rsquo;s performance across different aspects while building the To-Do application:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Rating (out of 10)</th>
+          <th>Emoji Rating</th>
+          <th>Comments</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>One shot utterance outcome</td>
+          <td>6/10</td>
+          <td>✅</td>
+          <td>Basic functionality was working. However it had few bugs.</td>
+      </tr>
+      <tr>
+          <td>First run</td>
+          <td>2/10</td>
+          <td>❌</td>
+          <td>First ever run after setting up dependency and packages had errors.</td>
+      </tr>
+      <tr>
+          <td>Setting Up Projects</td>
+          <td>9/10</td>
+          <td>🏆</td>
+          <td>Excellent at project initialization, dependency management, and creating the basic structure. Almost perfect for React setup.</td>
+      </tr>
+      <tr>
+          <td>Debugging and Problem Solving</td>
+          <td>8/10</td>
+          <td>⭐</td>
+          <td>Very good at identifying and fixing common React errors. Sometimes needed additional context for complex state management issues.</td>
+      </tr>
+      <tr>
+          <td>Code Review and Refactoring</td>
+          <td>7/10</td>
+          <td>👍</td>
+          <td>Looking at generated it is of descent quality. I had specifically asked to add comments in my first prompt.</td>
+      </tr>
+      <tr>
+          <td>Design and Layout</td>
+          <td>5/10</td>
+          <td>❌</td>
+          <td>Basic CSS suggestions were helpful, but needed more guidance for complex layouts and responsive design. I could not get it to fix the background structure.</td>
+      </tr>
+      <tr>
+          <td>Functional Competency</td>
+          <td>8/10</td>
+          <td>⭐</td>
+          <td>It correctly implemented basic CRUD operations on to-do items.</td>
+      </tr>
+      <tr>
+          <td>Surprise Factor</td>
+          <td>7/10</td>
+          <td>👍</td>
+          <td>It added these features without me asking 1) Enter is add 2) Made design responsive 3) Chose checkbox to mark it complete instead of button (single click)</td>
+      </tr>
+  </tbody>
+</table>
+<p>While Cursor is powerful, it&rsquo;s important to:</p>
+<ul>
+<li>Review generated code carefully</li>
+<li>Understand the suggestions before implementing</li>
+<li>Use it as a tool, not a replacement for learning</li>
+<li>Keep security considerations in mind</li>
+</ul>
+<h2 id="high-level-workflow">High level workflow</h2>
+<h3 id="1-first-prompt">1) First prompt</h3>
+<pre tabindex="0"><code>Create a simple to-do application using react. The application should allow users to add, remove, edit and mark tasks as complete. Make sure user interface is intuitive and visually appealing. Include code comments to explain the funationality of each component and the overall structure of the code easy to understand. Also, provide brief overview of the statemegement how it is handled. Id database is required, create in-memory database as needed. 
+</code></pre><p>This prompt resulted into entire project setup with React and basic functionality with in-memory database.</p>
+<p>1.A ) after this when I ran the server, it had mismatched versions and missing imports.
+1.B ) After fixing above, it ran but browser was empty nothing was there.</p>
+<p>Post that, it was able to fix and it worked.</p>
+<h3 id="2-testing-first-working-version">2) Testing first working version</h3>
+<p>2.A) When I refresh the page after adding To-Dos, app was not persisting them. Asked Cursor to fix it
+2.B) Next I Asked it to do following:</p>
+<pre tabindex="0"><code>I see 3 issues. 1) Home page design is not good. 2) deleted to-dos should move to deleted section. 3)  there is no button to mark task as complete.
+</code></pre><p>2.C) Asked one more requirement</p>
+<pre tabindex="0"><code>One more issue - once all the tasks are marked complete - count in &#34;Active Task&#34; should be 0 but it still shows count of all the to-dos created ever. 
+</code></pre><p>At this point - functionality stand point it had all the basic to-do app features working.</p>
+<h3 id="3-improving-desing">3) Improving desing</h3>
+<p>It improved the design but I was not able to remove the balck portion at the bottom of the page. I tried following prompts</p>
+<pre tabindex="0"><code>improve the home page design even more. Remove black and white background and keep 1 consistent background. 
+</code></pre><pre tabindex="0"><code>Bottons are better. However there is still while background which changes the size depending on number of to-dos. Remove that and keep just 1 box in entire page. Remove black part from the bottom. 
+</code></pre><h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://cursor.sh">Cursor Official Website</a></li>
+<li><a href="https://cursor.sh/docs">Cursor Documentation</a></li>
+<li><a href="https://github.com/getcursor/cursor">Cursor GitHub Repository</a></li>
+</ul>
+<hr>
+<p><em>Have you tried Cursor? Share your experiences and tips in the comments below!</em></p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        717 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2025-05-23 17:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="/posts/2019/11/personal-website-101/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Personal Website 101</span>
+                </a>
+            </span>
+            
+
+            
+            <span class="button next">
+                <a href="/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/">
+                    <span class="button__text">Diving Deep on model optimization parameters using llama.cpp</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "joshiharshit-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025</span>
+            <span><a href="/">Harshit Joshi</a></span>
+            <span></span>
+            <span><a href="/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>A year from now, you will wish you had started today. </br><a href="https://t.co/Wor3sMJ3DQ?amp=1">A Reason To Stop Worrying &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="/bundle.min.e89fda0f29b95d33f6f4224dd9e5cf69d84aff3818be2b0d73e731689cc374261b016d17d46f8381962fb4a1577ba3017b1f23509d894f6e66431f988c00889e.js" integrity="sha512-6J/aDym5XTP29CJN2eXPadhK/zgYvisNc&#43;cxaJzDdCYbAW0X1G&#43;DgZYvtKFXe6MBex8jUJ2JT25mQx&#43;YjACIng=="></script>
+
+
+
+
+    </body>
+</html>

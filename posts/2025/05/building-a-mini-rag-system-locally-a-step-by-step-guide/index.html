@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="">
+<meta name="description" content="In this article, we&rsquo;ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We&rsquo;ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.
+Prerequisites Before we begin, make sure you have the following installed:
+" />
+<meta name="keywords" content=", AI, RAG, LLM, Python, LangChain, LlamaIndex" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="//localhost:1313/posts/2025/05/building-a-mini-rag-system-locally-a-step-by-step-guide/" />
+
+
+    <title>
+        
+            Building a Mini RAG System Locally: A Step-by-Step Guide :: Harshit Joshi 
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="//localhost:1313/main.min.244183cde1a38e0b08f82c11791181288f9aac1cc9618cd6f4e9e7710c5768ba.css" integrity="sha256-JEGDzeGjjgsI&#43;CwReRGBKI&#43;arBzJYYzW9OnncQxXaLo=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//localhost:1313/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="//localhost:1313/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="//localhost:1313/favicon-16x16.png">
+    <link rel="manifest" href="//localhost:1313/site.webmanifest">
+    <link rel="mask-icon" href="//localhost:1313/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="//localhost:1313/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+
+  <meta itemprop="name" content="Building a Mini RAG System Locally: A Step-by-Step Guide">
+  <meta itemprop="description" content="In this article, we’ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We’ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.
+Prerequisites Before we begin, make sure you have the following installed:">
+  <meta itemprop="datePublished" content="2025-05-20T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2025-05-20T00:00:00+00:00">
+  <meta itemprop="wordCount" content="620">
+  <meta itemprop="keywords" content="AI,RAG,LLM,Python,LangChain,LlamaIndex">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Building a Mini RAG System Locally: A Step-by-Step Guide">
+  <meta name="twitter:description" content="In this article, we’ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We’ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.
+Prerequisites Before we begin, make sure you have the following installed:">
+
+
+
+    <meta property="og:url" content="//localhost:1313/posts/2025/05/building-a-mini-rag-system-locally-a-step-by-step-guide/">
+  <meta property="og:site_name" content="Harshit Joshi">
+  <meta property="og:title" content="Building a Mini RAG System Locally: A Step-by-Step Guide">
+  <meta property="og:description" content="In this article, we’ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We’ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.
+Prerequisites Before we begin, make sure you have the following installed:">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2025-05-20T00:00:00+00:00">
+    <meta property="article:modified_time" content="2025-05-20T00:00:00+00:00">
+    <meta property="article:tag" content="AI">
+    <meta property="article:tag" content="RAG">
+    <meta property="article:tag" content="LLM">
+    <meta property="article:tag" content="Python">
+    <meta property="article:tag" content="LangChain">
+    <meta property="article:tag" content="LlamaIndex">
+
+
+
+
+    <meta property="article:section" content="AI" />
+
+    <meta property="article:section" content="Tutorial" />
+
+
+
+    <meta property="article:published_time" content="2025-05-20 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6EYX1WEB9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6EYX1WEB9');
+        }
+      </script>
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="//localhost:1313/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ~/home</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="//localhost:1313/about">About</a></li><li><a href="//localhost:1313/posts">Blogs</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        3 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="//localhost:1313/posts/2025/05/building-a-mini-rag-system-locally-a-step-by-step-guide/">Building a Mini RAG System Locally: A Step-by-Step Guide</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>In this article, we&rsquo;ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We&rsquo;ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we begin, make sure you have the following installed:</p>
+<ul>
+<li>Python 3.8+</li>
+<li>pip (Python package manager)</li>
+<li>A C++ compiler (for llama.cpp)</li>
+</ul>
+<h2 id="step-1-setting-up-the-environment">Step 1: Setting Up the Environment</h2>
+<p>First, let&rsquo;s create a new virtual environment and install the required packages:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>cd /Users/hpjoshi/Documents/AppliedAI/dryrun/mini-rag
+</span></span><span style="display:flex;"><span>python -m venv venv
+</span></span><span style="display:flex;"><span>source venv/bin/activate  <span style="color:#75715e"># On Windows: venv\Scripts\activate</span>
+</span></span><span style="display:flex;"><span>pip install -r requirements.txt
+</span></span></code></pre></div><h2 id="step-2-project-structure">Step 2: Project Structure</h2>
+<p>Create the following project structure:</p>
+<pre tabindex="0"><code>mini_rag/
+├── app.py
+├── requirements.txt
+├── utils/
+│   ├── __init__.py
+│   ├── document_processor.py
+│   └── embeddings.py
+└── models/
+    └── llama-2-7b-chat.gguf
+</code></pre><h2 id="step-3-document-processing">Step 3: Document Processing</h2>
+<p>Create <code>utils/document_processor.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.text_splitter <span style="color:#f92672">import</span> RecursiveCharacterTextSplitter
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.document_loaders <span style="color:#f92672">import</span> PyPDFLoader
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> typing <span style="color:#f92672">import</span> List
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">DocumentProcessor</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, chunk_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1000</span>, chunk_overlap<span style="color:#f92672">=</span><span style="color:#ae81ff">200</span>):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>text_splitter <span style="color:#f92672">=</span> RecursiveCharacterTextSplitter(
+</span></span><span style="display:flex;"><span>            chunk_size<span style="color:#f92672">=</span>chunk_size,
+</span></span><span style="display:flex;"><span>            chunk_overlap<span style="color:#f92672">=</span>chunk_overlap
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_pdf</span>(self, file_path: str) <span style="color:#f92672">-&gt;</span> List[str]:
+</span></span><span style="display:flex;"><span>        loader <span style="color:#f92672">=</span> PyPDFLoader(file_path)
+</span></span><span style="display:flex;"><span>        pages <span style="color:#f92672">=</span> loader<span style="color:#f92672">.</span>load()
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>text_splitter<span style="color:#f92672">.</span>split_documents(pages)
+</span></span></code></pre></div><h2 id="step-4-embeddings-and-vector-store">Step 4: Embeddings and Vector Store</h2>
+<p>Create <code>utils/embeddings.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.embeddings <span style="color:#f92672">import</span> LlamaCppEmbeddings
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.vectorstores <span style="color:#f92672">import</span> FAISS
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">EmbeddingManager</span>:
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self, model_path: str):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>embeddings <span style="color:#f92672">=</span> LlamaCppEmbeddings(
+</span></span><span style="display:flex;"><span>            model_path<span style="color:#f92672">=</span>model_path,
+</span></span><span style="display:flex;"><span>            n_ctx<span style="color:#f92672">=</span><span style="color:#ae81ff">2048</span>
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>vector_store <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">create_vector_store</span>(self, documents):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>vector_store <span style="color:#f92672">=</span> FAISS<span style="color:#f92672">.</span>from_documents(
+</span></span><span style="display:flex;"><span>            documents,
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>embeddings
+</span></span><span style="display:flex;"><span>        )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">save_vector_store</span>(self, path: str):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>vector_store:
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>vector_store<span style="color:#f92672">.</span>save_local(path)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">load_vector_store</span>(self, path: str):
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>vector_store <span style="color:#f92672">=</span> FAISS<span style="color:#f92672">.</span>load_local(path, self<span style="color:#f92672">.</span>embeddings)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">similarity_search</span>(self, query: str, k: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">4</span>):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">if</span> self<span style="color:#f92672">.</span>vector_store:
+</span></span><span style="display:flex;"><span>            <span style="color:#66d9ef">return</span> self<span style="color:#f92672">.</span>vector_store<span style="color:#f92672">.</span>similarity_search(query, k<span style="color:#f92672">=</span>k)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> []
+</span></span></code></pre></div><h2 id="step-5-main-application">Step 5: Main Application</h2>
+<p>Create <code>app.py</code>:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> streamlit <span style="color:#66d9ef">as</span> st
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> utils.document_processor <span style="color:#f92672">import</span> DocumentProcessor
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> utils.embeddings <span style="color:#f92672">import</span> EmbeddingManager
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.llms <span style="color:#f92672">import</span> LlamaCpp
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.chains <span style="color:#f92672">import</span> ConversationalRetrievalChain
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> langchain.memory <span style="color:#f92672">import</span> ConversationBufferMemory
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> tempfile
+</span></span><span style="display:flex;"><span><span style="color:#f92672">import</span> os
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize components</span>
+</span></span><span style="display:flex;"><span>MODEL_PATH <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;models/llama-2-7b-chat.gguf&#34;</span>
+</span></span><span style="display:flex;"><span>document_processor <span style="color:#f92672">=</span> DocumentProcessor()
+</span></span><span style="display:flex;"><span>embedding_manager <span style="color:#f92672">=</span> EmbeddingManager(MODEL_PATH)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Initialize LLM</span>
+</span></span><span style="display:flex;"><span>llm <span style="color:#f92672">=</span> LlamaCpp(
+</span></span><span style="display:flex;"><span>    model_path<span style="color:#f92672">=</span>MODEL_PATH,
+</span></span><span style="display:flex;"><span>    temperature<span style="color:#f92672">=</span><span style="color:#ae81ff">0.7</span>,
+</span></span><span style="display:flex;"><span>    max_tokens<span style="color:#f92672">=</span><span style="color:#ae81ff">2000</span>,
+</span></span><span style="display:flex;"><span>    top_p<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>,
+</span></span><span style="display:flex;"><span>    verbose<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># Streamlit UI</span>
+</span></span><span style="display:flex;"><span>st<span style="color:#f92672">.</span>title(<span style="color:#e6db74">&#34;Mini RAG System&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># File upload</span>
+</span></span><span style="display:flex;"><span>uploaded_file <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>file_uploader(<span style="color:#e6db74">&#34;Upload a PDF&#34;</span>, type<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;pdf&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">if</span> uploaded_file:
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Save uploaded file temporarily</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">with</span> tempfile<span style="color:#f92672">.</span>NamedTemporaryFile(delete<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, suffix<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;.pdf&#39;</span>) <span style="color:#66d9ef">as</span> tmp_file:
+</span></span><span style="display:flex;"><span>        tmp_file<span style="color:#f92672">.</span>write(uploaded_file<span style="color:#f92672">.</span>getvalue())
+</span></span><span style="display:flex;"><span>        tmp_path <span style="color:#f92672">=</span> tmp_file<span style="color:#f92672">.</span>name
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Process document</span>
+</span></span><span style="display:flex;"><span>    documents <span style="color:#f92672">=</span> document_processor<span style="color:#f92672">.</span>load_pdf(tmp_path)
+</span></span><span style="display:flex;"><span>    embedding_manager<span style="color:#f92672">.</span>create_vector_store(documents)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Initialize conversation chain</span>
+</span></span><span style="display:flex;"><span>    memory <span style="color:#f92672">=</span> ConversationBufferMemory(
+</span></span><span style="display:flex;"><span>        memory_key<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;chat_history&#34;</span>,
+</span></span><span style="display:flex;"><span>        return_messages<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    qa_chain <span style="color:#f92672">=</span> ConversationalRetrievalChain<span style="color:#f92672">.</span>from_llm(
+</span></span><span style="display:flex;"><span>        llm<span style="color:#f92672">=</span>llm,
+</span></span><span style="display:flex;"><span>        retriever<span style="color:#f92672">=</span>embedding_manager<span style="color:#f92672">.</span>vector_store<span style="color:#f92672">.</span>as_retriever(),
+</span></span><span style="display:flex;"><span>        memory<span style="color:#f92672">=</span>memory
+</span></span><span style="display:flex;"><span>    )
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Chat interface</span>
+</span></span><span style="display:flex;"><span>    st<span style="color:#f92672">.</span>subheader(<span style="color:#e6db74">&#34;Chat with your document&#34;</span>)
+</span></span><span style="display:flex;"><span>    user_question <span style="color:#f92672">=</span> st<span style="color:#f92672">.</span>text_input(<span style="color:#e6db74">&#34;Ask a question about your document:&#34;</span>)
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">if</span> user_question:
+</span></span><span style="display:flex;"><span>        response <span style="color:#f92672">=</span> qa_chain({<span style="color:#e6db74">&#34;question&#34;</span>: user_question})
+</span></span><span style="display:flex;"><span>        st<span style="color:#f92672">.</span>write(<span style="color:#e6db74">&#34;Answer:&#34;</span>, response[<span style="color:#e6db74">&#34;answer&#34;</span>])
+</span></span><span style="display:flex;"><span>    
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># Cleanup</span>
+</span></span><span style="display:flex;"><span>    os<span style="color:#f92672">.</span>unlink(tmp_path)
+</span></span></code></pre></div><h2 id="step-6-running-the-application">Step 6: Running the Application</h2>
+<ol>
+<li>Download a GGUF format model (e.g., llama-2-7b-chat.gguf) and place it in the <code>models</code> directory</li>
+<li>Run the application:</li>
+</ol>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>streamlit run app.py
+</span></span></code></pre></div><h2 id="how-it-works">How It Works</h2>
+<ol>
+<li><strong>Document Processing</strong>: When a PDF is uploaded, it&rsquo;s split into chunks using LangChain&rsquo;s text splitter.</li>
+<li><strong>Embedding Generation</strong>: Each chunk is converted into embeddings using llama.cpp.</li>
+<li><strong>Vector Storage</strong>: FAISS stores these embeddings for efficient similarity search.</li>
+<li><strong>Question Answering</strong>: When a question is asked:
+<ul>
+<li>The system finds the most relevant document chunks</li>
+<li>These chunks are used as context for the LLM</li>
+<li>The LLM generates an answer based on the context</li>
+</ul>
+</li>
+</ol>
+<h2 id="customization-options">Customization Options</h2>
+<ul>
+<li>Adjust chunk size and overlap in <code>DocumentProcessor</code></li>
+<li>Modify the LLM parameters (temperature, max_tokens, etc.)</li>
+<li>Change the number of retrieved chunks (k) in similarity search</li>
+<li>Add support for different file formats</li>
+<li>Implement persistent storage for vector store</li>
+</ul>
+<h2 id="conclusion">Conclusion</h2>
+<p>This mini RAG system demonstrates how to build a document Q&amp;A system using local resources. While it&rsquo;s not as powerful as cloud-based solutions, it provides privacy and can be customized for specific needs. The system can be enhanced by:</p>
+<ul>
+<li>Adding more document types support</li>
+<li>Implementing better chunking strategies</li>
+<li>Adding authentication</li>
+<li>Optimizing the vector store</li>
+<li>Implementing caching mechanisms</li>
+</ul>
+<p>Remember that the quality of answers depends on the LLM model used and the chunking strategy. Experiment with different parameters to find the optimal configuration for your use case.</p>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-tag meta-icon"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"></path><line x1="7" y1="7" x2="7" y2="7"></line></svg>
+
+        <span class="tag"><a href="//localhost:1313/tags/ai/">AI</a></span>
+        <span class="tag"><a href="//localhost:1313/tags/rag/">RAG</a></span>
+        <span class="tag"><a href="//localhost:1313/tags/llm/">LLM</a></span>
+        <span class="tag"><a href="//localhost:1313/tags/python/">Python</a></span>
+        <span class="tag"><a href="//localhost:1313/tags/langchain/">LangChain</a></span>
+        <span class="tag"><a href="//localhost:1313/tags/llamaindex/">LlamaIndex</a></span>
+        
+    </p>
+
+      
+    <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-folder meta-icon"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path></svg>
+
+        <span class="tag"><a href="//localhost:1313/categories/ai/">AI</a></span>
+        <span class="tag"><a href="//localhost:1313/categories/tutorial/">Tutorial</a></span>
+        
+    </p>
+
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        620 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2025-05-19 17:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+            <span class="button previous">
+                <a href="//localhost:1313/posts/2025/05/working-with-llama.cpp-locally/">
+                    <span class="button__icon">←</span>
+                    <span class="button__text">Working with llama.cpp Locally</span>
+                </a>
+            </span>
+            
+
+            
+        </div>
+    </div>
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "joshiharshit-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025</span>
+            <span><a href="//localhost:1313/">Harshit Joshi</a></span>
+            <span></span>
+            <span><a href="//localhost:1313/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>A year from now, you will wish you had started today. </br><a href="https://t.co/Wor3sMJ3DQ?amp=1">A Reason To Stop Worrying &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="//localhost:1313/bundle.min.e89fda0f29b95d33f6f4224dd9e5cf69d84aff3818be2b0d73e731689cc374261b016d17d46f8381962fb4a1577ba3017b1f23509d894f6e66431f988c00889e.js" integrity="sha512-6J/aDym5XTP29CJN2eXPadhK/zgYvisNc&#43;cxaJzDdCYbAW0X1G&#43;DgZYvtKFXe6MBex8jUJ2JT25mQx&#43;YjACIng=="></script>
+
+
+
+
+    </body>
+</html>

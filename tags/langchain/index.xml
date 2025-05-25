@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>LangChain on Harshit Joshi</title>
+    <link>//localhost:1313/tags/langchain/</link>
+    <description>Recent content in LangChain on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 20 May 2024 00:00:00 +0000</lastBuildDate>
+    <atom:link href="//localhost:1313/tags/langchain/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Building a Mini RAG System Locally: A Step-by-Step Guide</title>
+      <link>//localhost:1313/posts/2024/05/building-a-mini-rag-system-locally-a-step-by-step-guide/</link>
+      <pubDate>Mon, 20 May 2024 00:00:00 +0000</pubDate>
+      <guid>//localhost:1313/posts/2024/05/building-a-mini-rag-system-locally-a-step-by-step-guide/</guid>
+      <description>&lt;p&gt;In this article, we&amp;rsquo;ll build a Mini RAG (Retrieval-Augmented Generation) system locally that can process PDF documents and answer questions about them. We&amp;rsquo;ll use llama.cpp for running the LLM locally, FAISS for vector storage, and LangChain for orchestrating the components. This system will allow users to upload PDFs, process them, and interact with the content through a chat interface.&lt;/p&gt;&#xA;&lt;h2 id=&#34;prerequisites&#34;&gt;Prerequisites&lt;/h2&gt;&#xA;&lt;p&gt;Before we begin, make sure you have the following installed:&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

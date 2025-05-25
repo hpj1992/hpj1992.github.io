@@ -1,0 +1,11 @@
+## Experience Rating
+
+Here's my personal rating of Cursor's performance across different aspects while building the To-Do application:
+
+| Aspect | Rating (out of 10) | Emoji Rating | Comments |
+|--------|-------------------|--------------|----------|
+| Setting Up Projects | 9/10 | 🏆 | Excellent at project initialization, dependency management, and creating the basic structure. Almost perfect for React setup. |
+| Debugging and Problem Solving | 8/10 | ⭐ | Very good at identifying and fixing common React errors. Sometimes needed additional context for complex state management issues. |
+| Code Review and Refactoring | 7/10 | 👍 | Good at suggesting improvements and maintaining code quality. Could be better at suggesting React-specific optimizations. |
+| Design and Layout | 6/10 | ✅ | Basic CSS suggestions were helpful, but needed more guidance for complex layouts and responsive design. |
+| Functional Competency | 8/10 | ⭐ | Strong in implementing core React features and hooks. Good understanding of component lifecycle and state management. | 

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Vibe Coding on Harshit Joshi</title>
+    <link>/series/vibe-coding/</link>
+    <description>Recent content in Vibe Coding on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/series/vibe-coding/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe coding To-Do app with Cursor</title>
+      <link>/posts/2025/05/vibe-coding-to-do-app-with-cursor/</link>
+      <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/2025/05/vibe-coding-to-do-app-with-cursor/</guid>
+      <description>&lt;p&gt;In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that&amp;rsquo;s redefining how we write and interact with code. In this post, I&amp;rsquo;ll share my experience with Cursor and how it&amp;rsquo;s transformed my coding workflow.&lt;/p&gt;&#xA;&lt;h2 id=&#34;what-are-we-doing-in-this-article&#34;&gt;What are we doing in this article?&lt;/h2&gt;&#xA;&lt;p&gt;In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

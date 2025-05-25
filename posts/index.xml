@@ -5,7 +5,7 @@
         <description>Recent content in Posts on Harshit Joshi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Mon, 05 May 2025 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sat, 24 May 2025 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
         
         <item>
@@ -269,6 +269,121 @@ The first responsibility of the professional programmer is to meet the needs of 
 <ul>
 <li><a href="http://joshiharshit.com/">http://joshiharshit.com/</a></li>
 </ul>
+]]></content>
+        </item>
+        
+        <item>
+            <title>Vibe coding To-Do app with Cursor</title>
+            <link>/posts/2025/05/vibe-coding-to-do-app-with-cursor/</link>
+            <pubDate>Sat, 24 May 2025 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2025/05/vibe-coding-to-do-app-with-cursor/</guid>
+            <description>&lt;p&gt;In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that&amp;rsquo;s redefining how we write and interact with code. In this post, I&amp;rsquo;ll share my experience with Cursor and how it&amp;rsquo;s transformed my coding workflow.&lt;/p&gt;
+&lt;h2 id=&#34;what-are-we-doing-in-this-article&#34;&gt;What are we doing in this article?&lt;/h2&gt;
+&lt;p&gt;In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>In the ever-evolving landscape of software development, the tools we use can significantly impact our productivity and coding experience. One such tool that has been making waves in the developer community is Cursor - an AI-powered code editor that&rsquo;s redefining how we write and interact with code. In this post, I&rsquo;ll share my experience with Cursor and how it&rsquo;s transformed my coding workflow.</p>
+<h2 id="what-are-we-doing-in-this-article">What are we doing in this article?</h2>
+<p>In this article we will explore how did cursor do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Cursor to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Cursor generated the code.</p>
+<p>Entire screen recording is also available for you to watch.</p>
+<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen="allowfullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/k3h_jew1b38?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
+    </div>
+
+<h2 id="experience-rating">Experience Rating</h2>
+<p>Here&rsquo;s my personal rating of Cursor&rsquo;s performance across different aspects while building the To-Do application:</p>
+<table>
+  <thead>
+      <tr>
+          <th>Aspect</th>
+          <th>Rating (out of 10)</th>
+          <th>Emoji Rating</th>
+          <th>Comments</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td>One shot utterance outcome</td>
+          <td>6/10</td>
+          <td>✅</td>
+          <td>Basic functionality was working. However it had few bugs.</td>
+      </tr>
+      <tr>
+          <td>First run</td>
+          <td>2/10</td>
+          <td>❌</td>
+          <td>First ever run after setting up dependency and packages had errors.</td>
+      </tr>
+      <tr>
+          <td>Setting Up Projects</td>
+          <td>9/10</td>
+          <td>🏆</td>
+          <td>Excellent at project initialization, dependency management, and creating the basic structure. Almost perfect for React setup.</td>
+      </tr>
+      <tr>
+          <td>Debugging and Problem Solving</td>
+          <td>8/10</td>
+          <td>⭐</td>
+          <td>Very good at identifying and fixing common React errors. Sometimes needed additional context for complex state management issues.</td>
+      </tr>
+      <tr>
+          <td>Code Review and Refactoring</td>
+          <td>7/10</td>
+          <td>👍</td>
+          <td>Looking at generated it is of descent quality. I had specifically asked to add comments in my first prompt.</td>
+      </tr>
+      <tr>
+          <td>Design and Layout</td>
+          <td>5/10</td>
+          <td>❌</td>
+          <td>Basic CSS suggestions were helpful, but needed more guidance for complex layouts and responsive design. I could not get it to fix the background structure.</td>
+      </tr>
+      <tr>
+          <td>Functional Competency</td>
+          <td>8/10</td>
+          <td>⭐</td>
+          <td>It correctly implemented basic CRUD operations on to-do items.</td>
+      </tr>
+      <tr>
+          <td>Surprise Factor</td>
+          <td>7/10</td>
+          <td>👍</td>
+          <td>It added these features without me asking 1) Enter is add 2) Made design responsive 3) Chose checkbox to mark it complete instead of button (single click)</td>
+      </tr>
+  </tbody>
+</table>
+<p>While Cursor is powerful, it&rsquo;s important to:</p>
+<ul>
+<li>Review generated code carefully</li>
+<li>Understand the suggestions before implementing</li>
+<li>Use it as a tool, not a replacement for learning</li>
+<li>Keep security considerations in mind</li>
+</ul>
+<h2 id="high-level-workflow">High level workflow</h2>
+<h3 id="1-first-prompt">1) First prompt</h3>
+<pre tabindex="0"><code>Create a simple to-do application using react. The application should allow users to add, remove, edit and mark tasks as complete. Make sure user interface is intuitive and visually appealing. Include code comments to explain the funationality of each component and the overall structure of the code easy to understand. Also, provide brief overview of the statemegement how it is handled. Id database is required, create in-memory database as needed. 
+</code></pre><p>This prompt resulted into entire project setup with React and basic functionality with in-memory database.</p>
+<p>1.A ) after this when I ran the server, it had mismatched versions and missing imports.
+1.B ) After fixing above, it ran but browser was empty nothing was there.</p>
+<p>Post that, it was able to fix and it worked.</p>
+<h3 id="2-testing-first-working-version">2) Testing first working version</h3>
+<p>2.A) When I refresh the page after adding To-Dos, app was not persisting them. Asked Cursor to fix it
+2.B) Next I Asked it to do following:</p>
+<pre tabindex="0"><code>I see 3 issues. 1) Home page design is not good. 2) deleted to-dos should move to deleted section. 3)  there is no button to mark task as complete.
+</code></pre><p>2.C) Asked one more requirement</p>
+<pre tabindex="0"><code>One more issue - once all the tasks are marked complete - count in &#34;Active Task&#34; should be 0 but it still shows count of all the to-dos created ever. 
+</code></pre><p>At this point - functionality stand point it had all the basic to-do app features working.</p>
+<h3 id="3-improving-desing">3) Improving desing</h3>
+<p>It improved the design but I was not able to remove the balck portion at the bottom of the page. I tried following prompts</p>
+<pre tabindex="0"><code>improve the home page design even more. Remove black and white background and keep 1 consistent background. 
+</code></pre><pre tabindex="0"><code>Bottons are better. However there is still while background which changes the size depending on number of to-dos. Remove that and keep just 1 box in entire page. Remove black part from the bottom. 
+</code></pre><h2 id="resources">Resources</h2>
+<ul>
+<li><a href="https://cursor.sh">Cursor Official Website</a></li>
+<li><a href="https://cursor.sh/docs">Cursor Documentation</a></li>
+<li><a href="https://github.com/getcursor/cursor">Cursor GitHub Repository</a></li>
+</ul>
+<hr>
+<p><em>Have you tried Cursor? Share your experiences and tips in the comments below!</em></p>
 ]]></content>
         </item>
         
