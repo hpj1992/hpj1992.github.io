@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Windsurf on Harshit Joshi</title>
+    <link>/series/windsurf/</link>
+    <description>Recent content in Windsurf on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/series/windsurf/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Vibe coding To-Do app with Windsurf</title>
+      <link>/posts/2025/06/vibe-coding-to-do-app-with-windsurf/</link>
+      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <guid>/posts/2025/06/vibe-coding-to-do-app-with-windsurf/</guid>
+      <description>&lt;h2 id=&#34;what-are-we-doing-in-this-article&#34;&gt;What are we doing in this article?&lt;/h2&gt;&#xA;&lt;p&gt;In this article we will explore how did Winsdurf do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Windsurf to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Windsurf generated the code.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
