@@ -6,26 +6,33 @@
     <description>Recent content in Series on Harshit Joshi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Sun, 08 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>/series/ai/</link>
-      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
       <guid>/series/ai/</guid>
       <description></description>
     </item>
     <item>
       <title>LLM</title>
       <link>/series/llm/</link>
-      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
       <guid>/series/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Development</title>
+      <link>/series/software-development/</link>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/series/software-development/</guid>
       <description></description>
     </item>
     <item>
       <title>Vibe Coding</title>
       <link>/series/vibe-coding/</link>
-      <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
       <guid>/series/vibe-coding/</guid>
       <description></description>
     </item>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Software Development on Harshit Joshi</title>
+    <link>/series/software-development/</link>
+    <description>Recent content in Software Development on Harshit Joshi</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="/series/software-development/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Re-wiring rules of SDLC: AI Through a Senior Engineer’s Lens</title>
+      <link>/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/</link>
+      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
+      <guid>/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/</guid>
+      <description>&lt;p&gt;With new large language models improving almost every day, I can’t help but feel excited. It reminds me of about ten years ago, when every new cloud tool or managed platform felt like a small dopamine hit. Back then, the excitement was about spinning up infrastructure in seconds and offloading undifferentiated heavy lifting to managed services. Today, that same feeling is back—but this time, the shift is happening in the way we actually build software. It feels less like an incremental improvement and more like a re-wiring of development processes that have been mostly unchanged for over a decade.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
