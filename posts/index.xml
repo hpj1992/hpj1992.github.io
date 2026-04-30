@@ -5,8 +5,134 @@
         <description>Recent content in Posts on Harshit Joshi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 11 Feb 2026 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>The 1M Token Question: Is RAG Dead in the Era of Infinite Context?</title>
+            <link>/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/</link>
+            <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/</guid>
+            <description>&lt;p&gt;In the last few months, the &amp;ldquo;context window wars&amp;rdquo; have escalated to a point that seemed like science fiction a year ago. With the latest flagship iterations of &lt;strong&gt;Claude&lt;/strong&gt; pushing 1M to 2M token windows, a new narrative has emerged:&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;&amp;ldquo;Why bother with the complexity of RAG (Retrieval-Augmented Generation) when you can just stuff the whole library into the prompt?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;As a tech lead, my job isn’t to chase the hype—it’s to look at the unit economics, latency profiles, and reliability of our systems. If you are building a toy project, context stuffing is fine. But if you are building a system for &lt;strong&gt;millions of users&lt;/strong&gt;, the &amp;ldquo;Infinite Context&amp;rdquo; dream hits a very hard wall of reality.&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>In the last few months, the &ldquo;context window wars&rdquo; have escalated to a point that seemed like science fiction a year ago. With the latest flagship iterations of <strong>Claude</strong> pushing 1M to 2M token windows, a new narrative has emerged:</p>
+<p><em>&ldquo;Why bother with the complexity of RAG (Retrieval-Augmented Generation) when you can just stuff the whole library into the prompt?&rdquo;</em></p>
+<p>As a tech lead, my job isn’t to chase the hype—it’s to look at the unit economics, latency profiles, and reliability of our systems. If you are building a toy project, context stuffing is fine. But if you are building a system for <strong>millions of users</strong>, the &ldquo;Infinite Context&rdquo; dream hits a very hard wall of reality.</p>
+<p>Let’s look at &ldquo;RAG vs. Long Context&rdquo; debate with factual data and architectural patterns.</p>
+<hr>
+<h2 id="1-the-power-of-in-context-learning-icl">1. The Power of &ldquo;In-Context Learning&rdquo; (ICL)</h2>
+<p>Long context windows are a paradigm shift. Recent &ldquo;Needle In A Haystack&rdquo; (NIAH) tests show that models handling 1M+ tokens can achieve near-perfect recall (99%+).</p>
+<p><strong>The Benefit:</strong> You skip the most painful part of RAG—<strong>Chunking and Embedding.</strong>
+In traditional RAG, if your chunking strategy is poor, the model loses the semantic relationship between paragraphs. With a 1M window, the model maintains full global attention. It &ldquo;understands&rdquo; the architecture of a 50,000-line codebase because it can see the whole thing at once. No more &ldquo;lost in retrieval.&rdquo;</p>
+<h2 id="2-the-latency-tax-why-your-users-will-leave">2. The Latency Tax: Why Your Users Will Leave</h2>
+<p>While technically possible to put 10 books in a prompt, from a production standpoint, it’s often a UX failure.</p>
+<ul>
+<li><strong>Standard RAG (Top 5 chunks):</strong> ~200ms - 500ms Time to First Token (TTFT).</li>
+<li><strong>1M Token Prompt:</strong> Even with optimizations like Flash Attention, processing a 1M token prefix is a massive compute task. You are looking at <strong>10 to 60+ seconds</strong> of &ldquo;thinking&rdquo; time.</li>
+</ul>
+<p>In a large-scale system, a 30-second delay for a simple query isn&rsquo;t a feature; it&rsquo;s an outage. Users expect near-instantaneous feedback, which only a lean prompt can provide.</p>
+<h2 id="3-the-toy-project-trap-unit-economics-at-scale">3. The &ldquo;Toy Project&rdquo; Trap: Unit Economics at Scale</h2>
+<p>Let’s look at the math for a system serving 1 million users:</p>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Metric</th>
+          <th style="text-align: left">Optimized RAG (5k context)</th>
+          <th style="text-align: left">Long Context (1M context)</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left"><strong>Cost per Query</strong></td>
+          <td style="text-align: left">~$0.005</td>
+          <td style="text-align: left">~$1.00 - $5.00</td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>Monthly Bill (1M queries)</strong></td>
+          <td style="text-align: left"><strong>$5,000</strong></td>
+          <td style="text-align: left"><strong>$1,000,000+</strong></td>
+      </tr>
+      <tr>
+          <td style="text-align: left"><strong>User Capacity per GPU</strong></td>
+          <td style="text-align: left">High (Batching dozens of users)</td>
+          <td style="text-align: left">Low (1-2 users per GPU)</td>
+      </tr>
+  </tbody>
+</table>
+<p>If you tell your CFO/VP that every &ldquo;Hello&rdquo; from a user costs the company $1.00 in tokens, the project will be shut down by Monday. RAG acts as a <strong>denoiser</strong>, ensuring we only pay for the tokens that provide actual signal for the query.</p>
+<h2 id="4-the-vram-wall-and-kv-caching">4. The VRAM Wall and KV Caching</h2>
+<p>This is the hidden technical hurdle. To maintain a 1M token context window, the model must store the <strong>KV (Key-Value) Cache</strong> in the GPU’s VRAM.</p>
+<ul>
+<li><strong>The Problem:</strong> A 1M token context can consume <strong>tens of gigabytes of VRAM</strong> for a <em>single</em> session.</li>
+<li><strong>The Scaling Reality:</strong> In a million-user system, you cannot afford to dedicate an entire H100 GPU to one user&rsquo;s session. RAG allows you to keep the &ldquo;working memory&rdquo; (the prompt) lean, enabling <strong>continuous batching</strong> where one GPU serves hundreds of users simultaneously.</li>
+</ul>
+<hr>
+<h2 id="5-architectural-pattern-the-hybrid-router">5. Architectural Pattern: The Hybrid &ldquo;Router&rdquo;</h2>
+<p>The future isn&rsquo;t <strong>RAG vs. Long Context</strong>; it’s <strong>RAG as a Filter</strong> for Long Context. We use RAG to prune the search space from 100GB of data down to 50k tokens of highly relevant &ldquo;Candidate Context,&rdquo; then use a model like Claude or Gemini to process that &ldquo;dense&rdquo; context.</p>
+<h3 id="sample-code-scale-aware-hybrid-retrieval">Sample Code: Scale-Aware Hybrid Retrieval</h3>
+<p>Here is the outcome of last cell in above notebook: <a href="https://colab.research.google.com/drive/1p8EX_G2s8kMKV32vvLgZvq5eMNOlArix?usp=sharing">https://colab.research.google.com/drive/1p8EX_G2s8kMKV32vvLgZvq5eMNOlArix?usp=sharing</a></p>
+<h3 id="performance-summary-table">Performance Summary Table</h3>
+<table>
+  <thead>
+      <tr>
+          <th style="text-align: left">Tier</th>
+          <th style="text-align: left">Mechanism</th>
+          <th style="text-align: left">Latency</th>
+          <th style="text-align: left">Cost Factor</th>
+          <th style="text-align: left">Best For</th>
+      </tr>
+  </thead>
+  <tbody>
+      <tr>
+          <td style="text-align: left">Tier 1 (Cache)</td>
+          <td style="text-align: left">In-Memory Hash Map</td>
+          <td style="text-align: left">0.0000s</td>
+          <td style="text-align: left">$0.00</td>
+          <td style="text-align: left">Millions of repeat users</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Tier 2 (RAG)</td>
+          <td style="text-align: left">Vector Search + Flash LLM</td>
+          <td style="text-align: left">1.74s</td>
+          <td style="text-align: left">$0.005</td>
+          <td style="text-align: left">Fast lookup of specific facts</td>
+      </tr>
+      <tr>
+          <td style="text-align: left">Tier 3 (Long Context)</td>
+          <td style="text-align: left">Full Context + Pro LLM</td>
+          <td style="text-align: left">26.07s</td>
+          <td style="text-align: left">$1.00+</td>
+          <td style="text-align: left">Deep reasoning/complex analysis</td>
+      </tr>
+  </tbody>
+</table>
+<hr>
+<h2 id="6-when-should-you-use-only-long-context">6. When SHOULD you use only Long Context?</h2>
+<p>As a tech lead engineer, I recommend bypassing RAG <em>only</em> in these specific high-value scenarios:</p>
+<ol>
+<li><strong>Complex Code Refactoring:</strong> When you need the model to understand how a change in <code>AuthService.java</code> impacts a controller 10 folders away.</li>
+<li><strong>Legal/Contractual Discovery:</strong> When the nuance of a contract depends on a definition on page 2 and a contradictory clause on page 800.</li>
+<li><strong>The &ldquo;Cold Start&rdquo; Analysis:</strong> When you have a brand-new dataset with no embeddings yet and you need an immediate global summary.</li>
+</ol>
+<h2 id="final-verdict">Final Verdict</h2>
+<p><strong>Do we still need RAG? Absolutely.</strong></p>
+<ol>
+<li><strong>Scalability:</strong> RAG is the only way to handle datasets that exceed the 1M-2M token limit (which most enterprise data does).</li>
+<li><strong>Data Freshness:</strong> You can update a Vector DB in milliseconds. Re-indexing or re-stuffing a 1M token prompt every time a price changes is a waste of compute.</li>
+<li><strong>Cost Control:</strong> For 95% of user queries (&ldquo;How do I reset my password?&rdquo;), RAG is 100x cheaper than Long Context with identical results.</li>
+</ol>
+<p>The context window is our <strong>RAM</strong>; the Vector DB (RAG) is our <strong>Hard Drive</strong>. You wouldn&rsquo;t build a computer with 2TB of RAM and no SSD—it’s too expensive, too volatile, and overkill for simple tasks. Build your AI systems with the same tiered-storage discipline.</p>
+<hr>
+<h3 id="resources-for-further-study">Resources for Further Study:</h3>
+<ul>
+<li><a href="https://github.com/gkamradt/LLMTest_NeedleInAHaystack">Needle In A Haystack Analysis (Greg Kamradt)</a></li>
+<li><a href="https://arxiv.org/abs/2307.03172">The &ldquo;Lost in the Middle&rdquo; Paper (Stanford)</a></li>
+<li><a href="https://storage.googleapis.com/deepmind-media/gemini/gemini_v1_5_report.pdf">Google Gemini 1.5 Technical Report</a></li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>Re-wiring rules of SDLC: AI Through a Senior Engineer’s Lens</title>
@@ -307,116 +433,6 @@ The first responsibility of the professional programmer is to meet the needs of 
 <ul>
 <li><a href="http://joshiharshit.com/">http://joshiharshit.com/</a></li>
 </ul>
-]]></content>
-        </item>
-        
-        <item>
-            <title>Vibe coding To-Do app with Windsurf</title>
-            <link>/posts/2025/06/vibe-coding-to-do-app-with-windsurf/</link>
-            <pubDate>Sun, 08 Jun 2025 00:00:00 +0000</pubDate>
-            
-            <guid>/posts/2025/06/vibe-coding-to-do-app-with-windsurf/</guid>
-            <description>&lt;h2 id=&#34;what-are-we-doing-in-this-article&#34;&gt;What are we doing in this article?&lt;/h2&gt;
-&lt;p&gt;In this article we will explore how did Winsdurf do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Windsurf to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Windsurf generated the code.&lt;/p&gt;</description>
-            <content type="html"><![CDATA[<h2 id="what-are-we-doing-in-this-article">What are we doing in this article?</h2>
-<p>In this article we will explore how did Winsdurf do when asked to create a simple To-Do application locally using React. I personally have very limited experience with React and majority of front-end technologies. So I was using Windsurf to help me create a simple To-Do application. I started with a basic prompt mentioned below and fine-tuned my responses as Windsurf generated the code.</p>
-<p>Entire screen recording is also available for you to watch.</p>
-<div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
-      <iframe allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share; fullscreen" loading="eager" referrerpolicy="strict-origin-when-cross-origin" src="https://www.youtube.com/embed/rMTkj-p746Y?autoplay=0&amp;controls=1&amp;end=0&amp;loop=0&amp;mute=0&amp;start=0" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border:0;" title="YouTube video"></iframe>
-    </div>
-
-<h2 id="experience-rating">Experience Rating</h2>
-<p>Here&rsquo;s my personal rating of Windsurf&rsquo;s performance across different aspects while building the To-Do application:</p>
-<table>
-  <thead>
-      <tr>
-          <th>Aspect</th>
-          <th>Rating (out of 10)</th>
-          <th>Emoji Rating</th>
-          <th>Comments</th>
-      </tr>
-  </thead>
-  <tbody>
-      <tr>
-          <td>One shot utterance outcome</td>
-          <td>7/10</td>
-          <td>⭐</td>
-          <td>Basic functionality was working with good looking UI. However it had few bugs related to permissions and functionality.</td>
-      </tr>
-      <tr>
-          <td>First run</td>
-          <td>8/10</td>
-          <td>⭐</td>
-          <td>First ever run had it working in browser with add, edit, mark complete and delete. However it still had bugs related to not persistent items upon refresh.</td>
-      </tr>
-      <tr>
-          <td>Setting Up Projects</td>
-          <td>9/10</td>
-          <td>🏆</td>
-          <td>Excellent at project initialization, dependency management, and creating the basic structure. Almost perfect for React setup.</td>
-      </tr>
-      <tr>
-          <td>Debugging and Problem Solving</td>
-          <td>8/10</td>
-          <td>⭐</td>
-          <td>Very good at identifying and fixing common React errors.</td>
-      </tr>
-      <tr>
-          <td>Code Review and Refactoring</td>
-          <td>7/10</td>
-          <td>👍</td>
-          <td>Looking at generated it is of descent quality. I had specifically asked to add comments in my first prompt.</td>
-      </tr>
-      <tr>
-          <td>Design and Layout</td>
-          <td>8/10</td>
-          <td>❌</td>
-          <td>Initial CSS and components it came up with was really nice looking with good color combination and responsive.</td>
-      </tr>
-      <tr>
-          <td>Functional Competency</td>
-          <td>8/10</td>
-          <td>⭐</td>
-          <td>It correctly implemented basic CRUD operations on to-do items.</td>
-      </tr>
-      <tr>
-          <td>Surprise Factor</td>
-          <td>8/10</td>
-          <td>👍</td>
-          <td>It added these features without me asking 1) Enter is add 2) Made design responsive 3) Chose checkbox to mark it complete instead of button (single click) 4) Buttons and icons</td>
-      </tr>
-  </tbody>
-</table>
-<h2 id="high-level-workflow">High level workflow</h2>
-<h3 id="1-first-prompt">1) First prompt</h3>
-<pre tabindex="0"><code>Create a simple to-do application using react. The application should allow users to add, remove, edit and mark tasks as complete. Make sure user interface is intuitive and visually appealing. Include code comments to explain the funationality of each component and the overall structure of the code easy to understand. Also, provide brief overview of the statemegement how it is handled. Id database is required, create in-memory database as needed. 
-</code></pre><p>This prompt resulted into entire project setup with React and basic functionality with in-memory database.</p>
-<p>1.A ) while creating files, it needed to make it public. Without that all the file creations were failing. You can see this in video at 1:11.</p>
-<p>Post that, it <code>npm install</code> and <code>npm start</code> started the server with basic Task manager app. It was able to 1) Add new to-do 2) Delete to-do 3) Edit previously created todo. You can see this in action beginning 3:00 in the video linked above.</p>
-<h3 id="2-testing-first-working-version">2) Testing first working version</h3>
-<p>2.A) Initially it had no button to mark todo as complete. So I prompted it to fix it. However, based on response looked like just clicking on it will mark it complete. Which was not very intuitive in the beginning. I asked it to update it and add separate sections for previously completed items.</p>
-<pre tabindex="0"><code>Found 2 bugs: 
-1) No feature to mark item as complete 
-2) No feature which shows deleted or previously completed items 
-</code></pre><p>Windsurf was able to update the code based on my prompt. Now updated UI had separate compoenets for All, Active and Completed.</p>
-<p>2.C) Asked one more requirement</p>
-<p>I noticed it was not persisting the counts of to-do/tasks when I refresh the page. This suggested it was not persisting the tasks in the local db and not fetching at the load time.</p>
-<pre tabindex="0"><code>Found one more bug. When page is refreshed - data is lost 
-</code></pre><p>Initially it suggested logic is correct and went on and suggested to debug in the browser. Immediaately it also agreed that it was critical bug and went on to fixing in the app.js . It had missed adding else block if it was not array. It fixed with following logic</p>
-<pre tabindex="0"><code>else {
-          // If parsedTodos is valid JSON but not an array (e.g., &#34;null&#34;, &#34;true&#34;, &#34;123&#34;, &#34;{}&#34;)
-          console.warn(&#39;Stored todos is valid JSON but not an array. Resetting. Found:&#39;, parsedTodos);
-          setTodos([]);
-        }
-</code></pre><p>Even after above fix it was not working, I had to prompt again with below at 13:09.</p>
-<pre tabindex="0"><code>issue still persists. Once I add a task and refresh a page - it is lost 
-</code></pre><p>At this point - functionality stand point it had all the basic to-do app features working.</p>
-<h3 id="3-improving-desing">3) Improving desing</h3>
-<pre tabindex="0"><code>Improve color scheme. Add some more animations. Improve the layout and make it responsive. 
-</code></pre><p>I did not push further as design was neat and clean. You can see final design and UI beginning 15:45 in the video linked above.</p>
-<p><img src="/images/vibe-code-windsurf-to-do.png" alt="Final version"></p>
-<hr>
-<p>*Have you tried Windsurf? Share your experiences and tips in the comments below!*git submodule update &ndash;recursive</p>
 ]]></content>
         </item>
         

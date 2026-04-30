@@ -1,26 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Software Development on Harshit Joshi</title>
-    <link>/series/software-development/</link>
-    <description>Recent content in Software Development on Harshit Joshi</description>
+    <title>RAG on Harshit Joshi</title>
+    <link>/series/rag/</link>
+    <description>Recent content in RAG on Harshit Joshi</description>
     <generator>Hugo</generator>
     <language>en</language>
     <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
-    <atom:link href="/series/software-development/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="/series/rag/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>The 1M Token Question: Is RAG Dead in the Era of Infinite Context?</title>
       <link>/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/</link>
       <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
       <guid>/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/</guid>
       <description>&lt;p&gt;In the last few months, the &amp;ldquo;context window wars&amp;rdquo; have escalated to a point that seemed like science fiction a year ago. With the latest flagship iterations of &lt;strong&gt;Claude&lt;/strong&gt; pushing 1M to 2M token windows, a new narrative has emerged:&lt;/p&gt;&#xA;&lt;p&gt;&lt;em&gt;&amp;ldquo;Why bother with the complexity of RAG (Retrieval-Augmented Generation) when you can just stuff the whole library into the prompt?&amp;rdquo;&lt;/em&gt;&lt;/p&gt;&#xA;&lt;p&gt;As a tech lead, my job isn’t to chase the hype—it’s to look at the unit economics, latency profiles, and reliability of our systems. If you are building a toy project, context stuffing is fine. But if you are building a system for &lt;strong&gt;millions of users&lt;/strong&gt;, the &amp;ldquo;Infinite Context&amp;rdquo; dream hits a very hard wall of reality.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Re-wiring rules of SDLC: AI Through a Senior Engineer’s Lens</title>
-      <link>/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/</link>
-      <pubDate>Wed, 11 Feb 2026 00:00:00 +0000</pubDate>
-      <guid>/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/</guid>
-      <description>&lt;p&gt;With new large language models improving almost every day, I can’t help but feel excited. It reminds me of about ten years ago, when every new cloud tool or managed platform felt like a small dopamine hit. Back then, the excitement was about spinning up infrastructure in seconds and offloading undifferentiated heavy lifting to managed services. Today, that same feeling is back—but this time, the shift is happening in the way we actually build software. It feels less like an incremental improvement and more like a re-wiring of development processes that have been mostly unchanged for over a decade.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
