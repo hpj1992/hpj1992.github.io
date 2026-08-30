@@ -5,8 +5,72 @@
         <description>Recent content in Posts on Harshit Joshi</description>
         <generator>Hugo -- gohugo.io</generator>
         <language>en</language>
-        <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
+        <lastBuildDate>Sun, 30 Aug 2026 00:00:00 +0000</lastBuildDate>
         <atom:link href="/posts/index.xml" rel="self" type="application/rss+xml" />
+        
+        <item>
+            <title>The agent in my pocket: how a side project survived a life with no free time</title>
+            <link>/posts/2026/08/the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/</link>
+            <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+            
+            <guid>/posts/2026/08/the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/</guid>
+            <description>&lt;p&gt;I have a toddler and a side-project Android app, and for a while I&amp;rsquo;d made my peace with the fact that only one of those was going to get built. Then I put &lt;a href=&#34;https://hermes-agent.nousresearch.com/&#34;&gt;Hermes Agent&lt;/a&gt; on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that&amp;rsquo;s a footnote, not the point.)&lt;/p&gt;</description>
+            <content type="html"><![CDATA[<p>I have a toddler and a side-project Android app, and for a while I&rsquo;d made my peace with the fact that only one of those was going to get built. Then I put <a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that&rsquo;s a footnote, not the point.)</p>
+<p>This isn&rsquo;t a how-to — the Hermes site covers what it is and how to set it up. This is about my particular setup, why the phone matters more than I expected, and the one thing I got wrong about running a cheap local model alongside the paid one.</p>
+<h2 id="why-hermes-and-not-openclaw">Why Hermes and not OpenClaw</h2>
+<p>I looked at OpenClaw first — it&rsquo;s the closest thing out there, and honestly they&rsquo;re built on the same idea: a local assistant that runs on your own machine, talks to Telegram and the rest, and gets extended with skills and plugins. Two things tipped me to Hermes. First, memory: Hermes keeps one persistent memory across everywhere I talk to it and remembers how it solved something last time, so it gets more useful the longer I use it. OpenClaw doesn&rsquo;t really put memory front and centre. Second, safety: Hermes has sandboxing built in, whereas OpenClaw runs tools directly on your machine unless you go set that up yourself. Since this thing has real access to my code and files, I&rsquo;d rather that guardrail come in the box. OpenClaw is the more build-it-yourself option; Hermes was closer to something I could just start using — which, given how little free time I have, was the deciding factor.</p>
+<h2 id="the-setup">The setup</h2>
+<pre class="mermaid">flowchart TD
+   Me([Me, on my phone<br/>usually away from the desk]) -->|text| TG[Telegram]
+   TG <-->|gateway| Hermes
+
+
+   subgraph Laptop["My laptop"]
+       Hermes["Hermes agent"]
+       Hermes --> Skills["Skills + MCP + tools"]
+       Hermes --> Copilot["GitHub Copilot<br/>(paid — the Android app)"]
+   end
+
+
+   subgraph Separate["Separate, lower-stakes projects"]
+       Qwen["Qwen 3B via Ollama<br/>(free, local, slow)"]
+   end
+
+
+   Copilot --> App[(Android app repo)]
+</pre>
+<p>Two things about this that matter more than the rest.</p>
+<h2 id="the-phone-is-the-whole-point">The phone is the whole point</h2>
+<p>I have a toddler at home. My working day is not a working day — it&rsquo;s a scatter of ten- and twenty-minute windows between the things a small child needs. I can&rsquo;t reliably sit at a desk. What I <em>can</em> do is send a message.</p>
+<p>So Hermes runs on the laptop, where it has real access to the code, and I reach it from my phone through Telegram. I kick something off — &ldquo;add the settings screen, wire it to the store, run the build&rdquo; — put the phone down, and go deal with the toddler. It works while I&rsquo;m not watching and pings me when it&rsquo;s done or stuck. When I get a free minute I check what it did and point it at the next thing.</p>
+<p>That&rsquo;s it. That&rsquo;s the unlock. Before this, a side project meant finding a two-hour block, and two-hour blocks don&rsquo;t exist in my life right now. Turning the work into something I can drive from my phone in the gaps is the only reason the app is getting built at all. The credits I burned are really just a measure of how many of those dead minutes turned into progress.</p>
+<h2 id="the-local-model-idea-that-didnt-pan-out-the-way-i-wanted">The local-model idea that didn&rsquo;t pan out the way I wanted</h2>
+<p>The plan was tidy: pay for Copilot for the hard work, and when the budget runs low, fall back to a small open-source model running locally through Ollama (Qwen, 3B). Free, always on, no meter.</p>
+<p>In practice the gap is bigger than &ldquo;a bit worse.&rdquo; Qwen can write code, but it&rsquo;s slow, and on anything non-trivial the quality difference against the paid model is large enough that I spend more time fixing its output than I saved. For the kind of work the Android app needs, it&rsquo;s mostly not worth it.</p>
+<p>What I actually landed on: <strong>I don&rsquo;t mix models on the same project anymore.</strong> Switching engines mid-project on the app just produced a mess — inconsistent code I then had to reconcile. So Copilot owns the app, start to finish. Qwen still gets used, but on <em>separate</em>, lower-stakes projects where slow-and-rough is fine and I&rsquo;m not going to care about the seams. Keeping them in their own lanes is the fix. Sharing them was the mistake.</p>
+<h2 id="what-id-actually-tell-you">What I&rsquo;d actually tell you</h2>
+<p>If you want to try this, the parts list is the easy bit. The two things I&rsquo;d pass on:</p>
+<ul>
+<li><strong>If your time comes in fragments, put the agent behind a text message.</strong> The laptop gives it hands; the phone gives you a doorway that costs nothing to walk through. That combination is what makes a side project survive a life with no free blocks in it.</li>
+<li><strong>A free local model is a real fallback, not a real substitute — so give it its own work.</strong> Don&rsquo;t split one project across a strong model and a weak one. Let the good one finish what it started, and hand the cheap one things where rough is good enough.</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<p>Two things I want to add and will write up once I&rsquo;ve actually run them for a while, not before. First, <a href="https://openrouter.ai/">OpenRouter</a>, so I&rsquo;m not tied to a single model provider and can pick whatever&rsquo;s best or cheapest for a given job without rewiring anything. Second, <a href="https://langfuse.com/">Langfuse</a>, so I can actually see what the agent is doing — which calls cost what, where it&rsquo;s wasting effort, what a day like the 7,000-credit one was really spent on. Right now that&rsquo;s a black box, and the day I burned through the budget I had no breakdown of where it went. I&rsquo;ll come back with how those land.</p>
+<p>The app is getting built. Not in the two-hour blocks I don&rsquo;t have, but in the ten-minute ones I do. That&rsquo;s the whole story — the agent didn&rsquo;t give me more time, it just let me use the time I was already spending on something else.</p>
+<h2 id="references">References</h2>
+<p>Setup and docs, if you want to build your own version of this:</p>
+<ul>
+<li><a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> — the agent I use; site covers the desktop app, install, and the channel/memory/sandboxing features.</li>
+<li><a href="https://nousresearch.com/">Nous Research</a> — the team behind Hermes.</li>
+<li><a href="https://github.com/openclaw/openclaw">OpenClaw (GitHub)</a> — the closest alternative; useful to read even if you pick Hermes, and its security/sandboxing guides are worth a look.</li>
+<li><a href="https://github.com/openclaw/clawhub">ClawHub</a> and <a href="https://github.com/VoltAgent/awesome-openclaw-skills">awesome-openclaw-skills</a> — skill and plugin registries; good for ideas on what to teach an agent, and many concepts carry over.</li>
+<li><a href="https://ollama.com/">Ollama</a> — the simplest way to run open models locally; how I run the small fallback model.</li>
+<li><a href="https://qwenlm.github.io/">Qwen</a> — the open-source model family I use locally through Ollama.</li>
+<li><a href="https://core.telegram.org/bots">Telegram Bot API</a> — background on the messaging channel that acts as my doorway to the agent.</li>
+<li><a href="https://openrouter.ai/">OpenRouter</a> and <a href="https://langfuse.com/">Langfuse</a> — the two things I&rsquo;m adding next (see above).</li>
+</ul>
+]]></content>
+        </item>
         
         <item>
             <title>The 1M Token Question: Is RAG Dead in the Era of Infinite Context?</title>

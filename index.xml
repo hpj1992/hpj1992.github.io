@@ -6,8 +6,15 @@
     <description>Recent content on Harshit Joshi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>The agent in my pocket: how a side project survived a life with no free time</title>
+      <link>/posts/2026/08/the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/</link>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>/posts/2026/08/the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/</guid>
+      <description>&lt;p&gt;I have a toddler and a side-project Android app, and for a while I&amp;rsquo;d made my peace with the fact that only one of those was going to get built. Then I put &lt;a href=&#34;https://hermes-agent.nousresearch.com/&#34;&gt;Hermes Agent&lt;/a&gt; on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that&amp;rsquo;s a footnote, not the point.)&lt;/p&gt;</description>
+    </item>
     <item>
       <title>The 1M Token Question: Is RAG Dead in the Era of Infinite Context?</title>
       <link>/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/</link>

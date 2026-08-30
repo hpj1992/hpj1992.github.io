@@ -6,20 +6,34 @@
     <description>Recent content in Series on Harshit Joshi</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <lastBuildDate>Wed, 29 Apr 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sun, 30 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="/series/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>AI</title>
       <link>/series/ai/</link>
-      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
       <guid>/series/ai/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Hermes Agent</title>
+      <link>/series/hermes-agent/</link>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>/series/hermes-agent/</guid>
       <description></description>
     </item>
     <item>
       <title>LLM</title>
       <link>/series/llm/</link>
-      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
       <guid>/series/llm/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Software Development</title>
+      <link>/series/software-development/</link>
+      <pubDate>Sun, 30 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>/series/software-development/</guid>
       <description></description>
     </item>
     <item>
@@ -27,13 +41,6 @@
       <link>/series/rag/</link>
       <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
       <guid>/series/rag/</guid>
-      <description></description>
-    </item>
-    <item>
-      <title>Software Development</title>
-      <link>/series/software-development/</link>
-      <pubDate>Wed, 29 Apr 2026 00:00:00 +0000</pubDate>
-      <guid>/series/software-development/</guid>
       <description></description>
     </item>
     <item>

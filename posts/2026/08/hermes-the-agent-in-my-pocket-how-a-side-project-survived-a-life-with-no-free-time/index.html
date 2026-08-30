@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=58970&amp;path=livereload" data-no-instant defer></script>
+        <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="author" content="map[name:Harshit Joshi]">
+<meta name="description" content="I have a toddler and a side-project Android app, and for a while I&rsquo;d made my peace with the fact that only one of those was going to get built. Then I put Hermes on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that&rsquo;s a footnote, not the point.)
+" />
+<meta name="keywords" content="" />
+<meta name="robots" content="noodp" />
+<meta name="theme-color" content="" />
+<link rel="canonical" href="//localhost:58970/posts/2026/08/hermes-the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/" />
+
+
+    <title>
+        
+            Hermes: The agent in my pocket: how a side project survived a life with no free time :: Harshit Joshi 
+        
+    </title>
+
+
+
+
+
+  <link rel="stylesheet" href="//localhost:58970/main.min.07ea7ac7da67e2e153a7dfa2457bc6a19cca824288d175e223fadc579041bc51.css" integrity="sha256-B&#43;p6x9pn4uFTp9&#43;iRXvGoZzKgkKI0XXiI/rcV5BBvFE=" crossorigin="anonymous">
+
+
+
+
+
+    <link rel="apple-touch-icon" sizes="180x180" href="//localhost:58970/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="//localhost:58970/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="//localhost:58970/favicon-16x16.png">
+    <link rel="manifest" href="//localhost:58970/site.webmanifest">
+    <link rel="mask-icon" href="//localhost:58970/safari-pinned-tab.svg" color="">
+    <link rel="shortcut icon" href="//localhost:58970/favicon.ico">
+    <meta name="msapplication-TileColor" content="">
+
+
+
+  <meta itemprop="name" content="Hermes: The agent in my pocket: how a side project survived a life with no free time">
+  <meta itemprop="description" content="I have a toddler and a side-project Android app, and for a while I’d made my peace with the fact that only one of those was going to get built. Then I put Hermes on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that’s a footnote, not the point.)">
+  <meta itemprop="datePublished" content="2026-08-30T00:00:00+00:00">
+  <meta itemprop="dateModified" content="2026-08-30T00:00:00+00:00">
+  <meta itemprop="wordCount" content="1147">
+  <meta itemprop="keywords" content="AI,LLM,Hermes Agent,Software Development">
+
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Hermes: The agent in my pocket: how a side project survived a life with no free time">
+  <meta name="twitter:description" content="I have a toddler and a side-project Android app, and for a while I’d made my peace with the fact that only one of those was going to get built. Then I put Hermes on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that’s a footnote, not the point.)">
+
+
+
+    <meta property="og:url" content="//localhost:58970/posts/2026/08/hermes-the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/">
+  <meta property="og:site_name" content="Harshit Joshi">
+  <meta property="og:title" content="Hermes: The agent in my pocket: how a side project survived a life with no free time">
+  <meta property="og:description" content="I have a toddler and a side-project Android app, and for a while I’d made my peace with the fact that only one of those was going to get built. Then I put Hermes on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that’s a footnote, not the point.)">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2026-08-30T00:00:00+00:00">
+    <meta property="article:modified_time" content="2026-08-30T00:00:00+00:00">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/vibe-coding-to-do-app-with-cursor/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/working-with-llama.cpp-locally/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/vibe-coding-to-do-app-with-cursor/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/diving-deep-on-model-optimization-parameters-using-llama.cpp/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2025/05/working-with-llama.cpp-locally/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/">
+      <meta property="og:see_also" content="//localhost:58970/posts/2026/02/re-wiring-rules-of-sdlc-ai-through-a-senior-engineers-lens/">
+
+
+
+
+
+
+    <meta property="article:published_time" content="2026-08-30 00:00:00 &#43;0000 UTC" />
+
+
+
+
+
+
+
+
+
+    
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-T6EYX1WEB9"></script>
+      <script>
+        var doNotTrack = false;
+        if ( false ) {
+          var dnt = (navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack);
+          var doNotTrack = (dnt == "1" || dnt == "yes");
+        }
+        if (!doNotTrack) {
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          gtag('config', 'G-T6EYX1WEB9');
+        }
+      </script>
+
+
+
+    </head>
+
+    
+        <body>
+    
+    
+        <div class="container">
+            <header class="header">
+    <span class="header__inner">
+        <a href="//localhost:58970/" style="text-decoration: none;">
+    <div class="logo">
+        
+            <span class="logo__mark">></span>
+            <span class="logo__text ">
+                ~/home</span>
+            <span class="logo__cursor" style=
+                  "
+                   
+                   ">
+            </span>
+        
+    </div>
+</a>
+
+
+        <span class="header__right">
+                <nav class="menu">
+    <ul class="menu__inner"><li><a href="//localhost:58970/about">About</a></li><li><a href="//localhost:58970/posts">Blogs</a></li>
+    </ul>
+</nav>
+
+                <span class="menu-trigger">
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M0 0h24v24H0z" fill="none"/>
+                        <path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/>
+                    </svg>
+                </span>
+        </span>
+    </span>
+</header>
+
+
+            <div class="content">
+                
+  <main class="post">
+
+    <div class="post-info">
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-clock">
+          <circle cx="12" cy="12" r="10"></circle>
+          <polyline points="12 6 12 12 16 14"></polyline>
+        </svg>
+        6 minutes
+
+        
+      </p>
+    </div>
+
+    <article>
+      <h1 class="post-title">
+        <a href="//localhost:58970/posts/2026/08/hermes-the-agent-in-my-pocket-how-a-side-project-survived-a-life-with-no-free-time/">Hermes: The agent in my pocket: how a side project survived a life with no free time</a>
+      </h1>
+
+      
+
+      
+
+      
+
+      <div class="post-content">
+        <p>I have a toddler and a side-project Android app, and for a while I&rsquo;d made my peace with the fact that only one of those was going to get built. Then I put <a href="https://hermes-agent.nousresearch.com/">Hermes</a> on my laptop and started talking to it through Telegram, and the app came back to life. (One day I got so into it I ran up 7,000 GitHub Copilot credits before I looked up — but that&rsquo;s a footnote, not the point.)</p>
+<p>This isn&rsquo;t a how-to — the Hermes site covers what it is and how to set it up. This is about my particular setup, why the phone matters more than I expected, and the one thing I got wrong about running a cheap local model alongside the paid one.</p>
+<h2 id="why-hermes-and-not-openclaw">Why Hermes and not OpenClaw</h2>
+<p>I looked at OpenClaw first — it&rsquo;s the closest thing out there, and honestly they&rsquo;re built on the same idea: a local assistant that runs on your own machine, talks to Telegram and the rest, and gets extended with skills and plugins. Two things tipped me to Hermes. First, memory: Hermes keeps one persistent memory across everywhere I talk to it and remembers how it solved something last time, so it gets more useful the longer I use it. OpenClaw doesn&rsquo;t really put memory front and centre. Second, safety: Hermes has sandboxing built in, whereas OpenClaw runs tools directly on your machine unless you go set that up yourself. Since this thing has real access to my code and files, I&rsquo;d rather that guardrail come in the box. OpenClaw is the more build-it-yourself option; Hermes was closer to something I could just start using — which, given how little free time I have, was the deciding factor.</p>
+<h2 id="the-setup">The setup</h2>
+<pre class="mermaid">flowchart TD
+   Me([Me, on my phone<br/>usually away from the desk]) -->|text| TG[Telegram]
+   TG <-->|gateway| Hermes
+
+
+   subgraph Laptop["My laptop"]
+       Hermes["Hermes agent"]
+       Hermes --> Skills["Skills + MCP + tools"]
+       Hermes --> Copilot["GitHub Copilot<br/>(paid — the Android app)"]
+   end
+
+
+   subgraph Separate["Separate, lower-stakes projects"]
+       Qwen["Qwen 3B via Ollama<br/>(free, local, slow)"]
+   end
+
+
+   Copilot --> App[(Android app repo)]
+</pre>
+<p>Two things about this that matter more than the rest.</p>
+<h2 id="the-phone-is-the-whole-point">The phone is the whole point</h2>
+<p>I have a toddler at home. My working day is not a working day — it&rsquo;s a scatter of ten- and twenty-minute windows between the things a small child needs. I can&rsquo;t reliably sit at a desk. What I <em>can</em> do is send a message.</p>
+<p>So Hermes runs on the laptop, where it has real access to the code, and I reach it from my phone through Telegram. I kick something off — &ldquo;add the settings screen, wire it to the store, run the build&rdquo; — put the phone down, and go deal with the toddler. It works while I&rsquo;m not watching and pings me when it&rsquo;s done or stuck. When I get a free minute I check what it did and point it at the next thing.</p>
+<p>That&rsquo;s it. That&rsquo;s the unlock. Before this, a side project meant finding a two-hour block, and two-hour blocks don&rsquo;t exist in my life right now. Turning the work into something I can drive from my phone in the gaps is the only reason the app is getting built at all. The credits I burned are really just a measure of how many of those dead minutes turned into progress.</p>
+<h2 id="the-local-model-idea-that-didnt-pan-out-the-way-i-wanted">The local-model idea that didn&rsquo;t pan out the way I wanted</h2>
+<p>The plan was tidy: pay for Copilot for the hard work, and when the budget runs low, fall back to a small open-source model running locally through Ollama (Qwen, 3B). Free, always on, no meter.</p>
+<p>In practice the gap is bigger than &ldquo;a bit worse.&rdquo; Qwen can write code, but it&rsquo;s slow, and on anything non-trivial the quality difference against the paid model is large enough that I spend more time fixing its output than I saved. For the kind of work the Android app needs, it&rsquo;s mostly not worth it.</p>
+<p>What I actually landed on: <strong>I don&rsquo;t mix models on the same project anymore.</strong> Switching engines mid-project on the app just produced a mess — inconsistent code I then had to reconcile. So Copilot owns the app, start to finish. Qwen still gets used, but on <em>separate</em>, lower-stakes projects where slow-and-rough is fine and I&rsquo;m not going to care about the seams. Keeping them in their own lanes is the fix. Sharing them was the mistake.</p>
+<h2 id="what-id-actually-tell-you">What I&rsquo;d actually tell you</h2>
+<p>If you want to try this, the parts list is the easy bit. The two things I&rsquo;d pass on:</p>
+<ul>
+<li><strong>If your time comes in fragments, put the agent behind a text message.</strong> The laptop gives it hands; the phone gives you a doorway that costs nothing to walk through. That combination is what makes a side project survive a life with no free blocks in it.</li>
+<li><strong>A free local model is a real fallback, not a real substitute — so give it its own work.</strong> Don&rsquo;t split one project across a strong model and a weak one. Let the good one finish what it started, and hand the cheap one things where rough is good enough.</li>
+</ul>
+<h2 id="whats-next">What&rsquo;s next</h2>
+<p>Two things I want to add and will write up once I&rsquo;ve actually run them for a while, not before. First, <a href="https://openrouter.ai/">OpenRouter</a>, so I&rsquo;m not tied to a single model provider and can pick whatever&rsquo;s best or cheapest for a given job without rewiring anything. Second, <a href="https://langfuse.com/">Langfuse</a>, so I can actually see what the agent is doing — which calls cost what, where it&rsquo;s wasting effort, what a day like the 7,000-credit one was really spent on. Right now that&rsquo;s a black box, and the day I burned through the budget I had no breakdown of where it went. I&rsquo;ll come back with how those land.</p>
+<p>The app is getting built. Not in the two-hour blocks I don&rsquo;t have, but in the ten-minute ones I do. That&rsquo;s the whole story — the agent didn&rsquo;t give me more time, it just let me use the time I was already spending on something else.</p>
+<h2 id="references">References</h2>
+<p>Setup and docs, if you want to build your own version of this:</p>
+<ul>
+<li><a href="https://hermes-agent.nousresearch.com/">Hermes Agent</a> — the agent I use; site covers the desktop app, install, and the channel/memory/sandboxing features.</li>
+<li><a href="https://nousresearch.com/">Nous Research</a> — the team behind Hermes.</li>
+<li><a href="https://github.com/openclaw/openclaw">OpenClaw (GitHub)</a> — the closest alternative; useful to read even if you pick Hermes, and its security/sandboxing guides are worth a look.</li>
+<li><a href="https://github.com/openclaw/clawhub">ClawHub</a> and <a href="https://github.com/VoltAgent/awesome-openclaw-skills">awesome-openclaw-skills</a> — skill and plugin registries; good for ideas on what to teach an agent, and many concepts carry over.</li>
+<li><a href="https://ollama.com/">Ollama</a> — the simplest way to run open models locally; how I run the small fallback model.</li>
+<li><a href="https://qwenlm.github.io/">Qwen</a> — the open-source model family I use locally through Ollama.</li>
+<li><a href="https://core.telegram.org/bots">Telegram Bot API</a> — background on the messaging channel that acts as my doorway to the agent.</li>
+<li><a href="https://openrouter.ai/">OpenRouter</a> and <a href="https://langfuse.com/">Langfuse</a> — the two things I&rsquo;m adding next (see above).</li>
+</ul>
+
+      </div>
+    </article>
+
+    <hr />
+
+    <div class="post-info">
+      
+      
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-file-text">
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+          <polyline points="14 2 14 8 20 8"></polyline>
+          <line x1="16" y1="13" x2="8" y2="13"></line>
+          <line x1="16" y1="17" x2="8" y2="17"></line>
+          <polyline points="10 9 9 9 8 9"></polyline>
+        </svg>
+        1147 Words
+      </p>
+
+      <p>
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-calendar">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect>
+          <line x1="16" y1="2" x2="16" y2="6"></line>
+          <line x1="8" y1="2" x2="8" y2="6"></line>
+          <line x1="3" y1="10" x2="21" y2="10"></line>
+        </svg>
+        
+          2026-08-29 17:00
+        
+
+         
+          
+        
+      </p>
+    </div>
+
+    
+    <div class="pagination">
+        
+
+        <div class="pagination__buttons">
+            
+
+            
+            <span class="button next">
+                <a href="//localhost:58970/posts/2026/04/the-1m-token-question-is-rag-dead-in-the-era-of-infinite-context/">
+                    <span class="button__text">The 1M Token Question: Is RAG Dead in the Era of Infinite Context?</span>
+                    <span class="button__icon">→</span>
+                </a>
+            </span>
+            
+        </div>
+    </div>
+
+
+    
+      
+        <div id="comments">
+          <div id="disqus_thread"></div>
+<script>
+    window.disqus_config = function () {
+    
+    
+    
+    };
+    (function() {
+        if (["localhost", "127.0.0.1"].indexOf(window.location.hostname) != -1) {
+            document.getElementById('disqus_thread').innerHTML = 'Disqus comments not available by default when the website is previewed locally.';
+            return;
+        }
+        var d = document, s = d.createElement('script'); s.async = true;
+        s.src = '//' + "joshiharshit-com" + '.disqus.com/embed.js';
+        s.setAttribute('data-timestamp', +new Date());
+        (d.head || d.body).appendChild(s);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="https://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </div>
+      
+    
+
+    
+
+    
+
+  </main>
+
+            </div>
+
+            
+                <footer class="footer">
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>&copy; 2025</span>
+            <span><a href="//localhost:58970/">Harshit Joshi</a></span>
+            <span></span>
+            <span><a href="//localhost:58970/posts/index.xml" target="_blank" title="rss"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-rss"><path d="M4 11a9 9 0 0 1 9 9"></path><path d="M4 4a16 16 0 0 1 16 16"></path><circle cx="5" cy="19" r="1"></circle></svg></a></span>
+            
+        </div>
+    </div>
+    
+    
+    <div class="footer__inner">
+        <div class="footer__content">
+            <span>A year from now, you will wish you had started today. </br><a href="https://t.co/Wor3sMJ3DQ?amp=1">A Reason To Stop Worrying &#10084;</a></span>
+        </div>
+    </div>
+    
+</footer>
+
+            
+        </div>
+
+        
+
+
+
+<script type="text/javascript" src="//localhost:58970/bundle.min.ad54ad97364f77ede35def9096b162bb1f0b3973aa50b080f5e82fa147f6882e2a7200d7535adbf9b51bebf939f1c1ca9bbe6be87530092aca720eac4a226fda.js" integrity="sha512-rVStlzZPd&#43;3jXe&#43;QlrFiux8LOXOqULCA9egvoUf2iC4qcgDXU1rb&#43;bUb6/k58cHKm75r6HUwCSrKcg6sSiJv2g=="></script>
+
+
+
+
+<script type="module">
+    import mermaid from "https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.esm.min.mjs";
+    const settings = localStorage.getItem("theme") === "dark" ?
+        {
+            startOnLoad: true,
+            theme: "dark",
+            darkMode: true,
+            themeVariables: {
+                tertiaryColor: "#dee3ed"
+            }
+        }
+        :
+        {
+            startOnLoad: true,
+            theme: "base",
+            darkMode: false,
+            themeVariables: {
+                tertiaryColor: "#dee3ed"
+            }
+        }
+    ;
+    mermaid.initialize(settings);
+</script>
+
+    </body>
+</html>
